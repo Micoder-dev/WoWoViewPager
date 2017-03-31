@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <bool name="default_dashPath">true</bool>
+    <dimen name="default_dashPathSegmentLength">20px</dimen>
+    <dimen name="default_dashPathPaddingLength">10px</dimen>
+    <bool name="default_dynamicPath">false</bool>
+    <dimen name="default_dynamicPathSpeed">3px</dimen>
+    <color name="default_pathColor">#ffffff</color>
+    <dimen name="default_pathWidth">2dp</dimen>
+    <integer name="default_headImageSrc">0</integer>
+    <dimen name="default_headImageWidth">0dp</dimen>
+    <dimen name="default_headImageHeight">0dp</dimen>
+
+</resources>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string-array
-        name="ease_types">
+    <string-array name="ease_types">
+        <item>Linear</item>
         <item>Ease In Sine</item>
         <item>Ease Out Sine</item>
         <item>Ease In Out Sine</item>
@@ -33,7 +33,6 @@
         <item>Ease In Bounce</item>
         <item>Ease Out Bounce</item>
         <item>Ease In Out Bounce</item>
-        <item>Linear</item>
     </string-array>
 
 </resources>

@@ -48,13 +48,22 @@
             android:name=".WoWoPathAnimationActivity"
             android:theme="@style/ShowAppTheme" />
         <activity
-            android:name=".AppIntroExampleActivity"
-            android:theme="@style/ShowAppTheme" />
-        <activity
-            android:name=".CVExampleActivity"
-            android:theme="@style/ShowAppTheme" />
-        <activity
             android:name=".WoWoTextViewTextSizeAnimationActivity"
+            android:theme="@style/ShowAppTheme" />
+        <activity
+            android:name=".WoWoPositionAnimationActivity"
+            android:theme="@style/ShowAppTheme" />
+        <activity
+            android:name=".WoWoTextViewTextAnimationActivity"
+            android:theme="@style/ShowAppTheme" />
+        <activity
+            android:name=".GuidePageActivity1"
+            android:theme="@style/ShowAppTheme" />
+        <activity
+            android:name=".GearboxActivity"
+            android:theme="@style/ShowAppTheme" />
+        <activity
+            android:name=".StaticActivity"
             android:theme="@style/ShowAppTheme" />
     </application>
 

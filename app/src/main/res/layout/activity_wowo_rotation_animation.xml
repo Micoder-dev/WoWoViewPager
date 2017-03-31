@@ -11,65 +11,19 @@
         android:layout_height="match_parent"
         />
 
-    <LinearLayout
-        android:layout_centerInParent="true"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            >
-
-            <TextView
-                android:id="@+id/test1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="NIGHTONKE"
-                android:textStyle="bold"
-                android:textSize="50sp"
-                android:textColor="@color/colorPrimary"
-                android:layout_gravity="center_horizontal"
-                android:layout_centerInParent="true"
-                />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            >
-
-            <TextView
-                android:id="@+id/test2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="NIGHTONKE"
-                android:textStyle="bold"
-                android:textSize="50sp"
-                android:textColor="@color/colorPrimary"
-                android:layout_gravity="center_horizontal"
-                android:layout_centerInParent="true"
-                />
-
-        </RelativeLayout>
-
-    </LinearLayout>
-
     <TextView
-        android:id="@+id/page"
-        android:layout_width="match_parent"
+        android:id="@+id/test"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
         android:gravity="center"
-        android:layout_alignParentBottom="true"
-        android:text="1"
+        android:text="WoWoViewPager"
+        android:textStyle="bold"
+        android:textSize="40sp"
+        android:textColor="@color/black"
+        android:layout_gravity="center_horizontal"
+        android:layout_centerInParent="true"
         />
+
+    <TextView style="@style/PageIndexTextView" />
 
 </RelativeLayout>

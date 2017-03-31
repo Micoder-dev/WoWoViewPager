@@ -2,11 +2,16 @@
 <resources>
 
     <declare-styleable name="WoWoPathView">
-        <attr name="pathColor" format="color"/>
-        <attr name="pathWidth" format="float"/>
-        <attr name="headImageId" format="integer"/>
-        <attr name="headImageWidth" format="float"/>
-        <attr name="headImageHeight" format="float"/>
+        <attr name="wowo_dashPath" format="boolean|reference"/>
+        <attr name="wowo_dashPathSegmentLength" format="dimension|reference"/>
+        <attr name="wowo_dashPathPaddingLength" format="dimension|reference"/>
+        <attr name="wowo_dynamicPath" format="boolean|reference"/>
+        <attr name="wowo_dynamicPathSpeed" format="dimension|reference"/>
+        <attr name="wowo_pathColor" format="color|reference"/>
+        <attr name="wowo_pathWidth" format="dimension|reference"/>
+        <attr name="wowo_headImageSrc" format="reference"/>
+        <attr name="wowo_headImageWidth" format="dimension|reference"/>
+        <attr name="wowo_headImageHeight" format="dimension|reference"/>
     </declare-styleable>
 
 </resources>

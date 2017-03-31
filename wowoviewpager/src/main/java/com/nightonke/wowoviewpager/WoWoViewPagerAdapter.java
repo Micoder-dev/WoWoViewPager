@@ -186,7 +186,7 @@ public class WoWoViewPagerAdapter extends FragmentStatePagerAdapter {
         return colorsRes;
     }
 
-    public void setColorsRes(Integer[] colorsRes) {
+    public void setColorsRes(Integer... colorsRes) {
         setColorsRes(new ArrayList<>(Arrays.asList(colorsRes)));
     }
 
@@ -209,7 +209,7 @@ public class WoWoViewPagerAdapter extends FragmentStatePagerAdapter {
      * set colors of fragments
      * @param colors colors
      */
-    public void setColors(Integer[] colors) {
+    public void setColors(Integer... colors) {
         setColors(new ArrayList<>(Arrays.asList(colors)));
     }
 

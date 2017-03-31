@@ -27,6 +27,13 @@
             />
 
         <Button
+            android:id="@+id/wowo_position_animation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/wowo_position_animation"
+            />
+
+        <Button
             android:id="@+id/wowo_translation_animation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -57,7 +64,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:text="@string/font_size_animations"
+            android:text="@string/text_view_animations"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="18sp"
@@ -65,10 +72,24 @@
             />
 
         <Button
-            android:id="@+id/wowo_textview_textsize_animation"
+            android:id="@+id/wowo_text_view_text_size_animation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/wowo_textview_textsize_animation"
+            android:text="@string/wowo_text_view_text_size_animation"
+            />
+
+        <Button
+            android:id="@+id/wowo_text_view_color_animation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/wowo_text_view_color_animation"
+            />
+
+        <Button
+            android:id="@+id/wowo_text_view_text_animation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/wowo_text_view_text_animation"
             />
 
         <TextView
@@ -86,13 +107,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/wowo_background_color_animation"
-            />
-
-        <Button
-            android:id="@+id/wowo_textview_color_animation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/wowo_textview_color_animation"
             />
 
         <Button
@@ -136,6 +150,30 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:text="@string/view_pager_attributes"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:gravity="center_vertical"
+            />
+
+        <Button
+            android:id="@+id/gearbox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/gearbox"
+            />
+
+        <Button
+            android:id="@+id/static_view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/static_view_pager"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
             android:text="@string/example"
             android:textStyle="bold"
             android:textColor="@color/black"
@@ -144,17 +182,24 @@
             />
 
         <Button
-            android:id="@+id/app_intro_example"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/app_intro_example"
-            />
-
-        <Button
             android:id="@+id/cv_example"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/cv_example"
+            />
+
+        <Button
+            android:id="@+id/guide_page_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/guide_page_1"
+            />
+
+        <Button
+            android:id="@+id/guide_page_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/guide_page_2"
             />
 
     </LinearLayout>

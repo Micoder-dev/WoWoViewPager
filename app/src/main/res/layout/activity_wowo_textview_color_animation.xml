@@ -25,7 +25,7 @@
             android:gravity="center"
             android:text="NIGHTONKE"
             android:textStyle="bold"
-            android:textSize="50sp"
+            android:textSize="60sp"
             android:layout_gravity="center_horizontal"
             />
 
@@ -44,7 +44,7 @@
             android:gravity="center"
             android:text="NIGHTONKE"
             android:textStyle="bold"
-            android:textSize="50sp"
+            android:textSize="60sp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             />
@@ -59,14 +59,6 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/page"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:gravity="center"
-        android:layout_alignParentBottom="true"
-        android:text="1"
-        />
+    <TextView style="@style/PageIndexTextView" />
 
 </RelativeLayout>
