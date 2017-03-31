@@ -28,6 +28,9 @@
     <string name="gearbox">Gearbox of ViewPager</string>
     <string name="static_view_pager">Static ViewPager</string>
 
+    <string name="interface_expansibility">Interface Expansibility</string>
+    <string name="svg_expansibility">SVG</string>
+
     <string name="example">Examples</string>
     <string name="cv_example">CV Example</string>
     <string name="guide_page_1">Guide Page Example 1</string>

@@ -9,6 +9,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.nightonke.wowoviewpagerexample.svg.SVGActivity;
+
 public class MainActivity extends AppCompatActivity
         implements View.OnClickListener {
 
@@ -36,6 +38,8 @@ public class MainActivity extends AppCompatActivity
 
         findViewById(R.id.gearbox).setOnClickListener(this);
         findViewById(R.id.static_view_pager).setOnClickListener(this);
+
+        findViewById(R.id.svg_expansibility).setOnClickListener(this);
 
         findViewById(R.id.cv_example).setOnClickListener(this);
         findViewById(R.id.guide_page_1).setOnClickListener(this);
@@ -90,6 +94,9 @@ public class MainActivity extends AppCompatActivity
                 return;
             case R.id.static_view_pager:
                 startActivity(new Intent(this, StaticActivity.class));
+                return;
+            case R.id.svg_expansibility:
+                startActivity(new Intent(this, SVGActivity.class));
                 return;
             case R.id.guide_page_1:
                 startActivity(new Intent(this, GuidePageActivity1.class));
