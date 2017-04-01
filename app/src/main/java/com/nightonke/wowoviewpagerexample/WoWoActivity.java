@@ -15,7 +15,6 @@ import com.nightonke.wowoviewpager.WoWoViewPagerAdapter;
 public abstract class WoWoActivity extends AppCompatActivity {
 
     protected WoWoViewPager wowo;
-    protected WoWoViewPagerAdapter adapter;
 
     protected Ease ease = Ease.Linear;
     protected boolean useSameEaseTypeBack = true;
@@ -53,10 +52,11 @@ public abstract class WoWoActivity extends AppCompatActivity {
         init();
 
         wowo = (WoWoViewPager)findViewById(R.id.wowo_viewpager);
-        adapter = new WoWoViewPagerAdapter(getSupportFragmentManager());
-        adapter.setFragmentsNumber(fragmentNumber());
-        adapter.setColorsRes(fragmentColorsRes());
-        wowo.setAdapter(adapter);
+        wowo.setAdapter(WoWoViewPagerAdapter.builder()
+                .fragmentManager(getSupportFragmentManager())
+                .count(fragmentNumber())
+                .colorsRes(fragmentColorsRes())
+                .build());
         setPageTV(wowo);
 
         pageNumber = (TextView) findViewById(R.id.page);

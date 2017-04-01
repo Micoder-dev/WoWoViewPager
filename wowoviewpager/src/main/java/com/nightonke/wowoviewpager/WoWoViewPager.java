@@ -39,7 +39,6 @@ public class WoWoViewPager extends ViewPager {
     private ArrayList<ViewAnimation> viewAnimations = new ArrayList<>();
     private WoWoScroller scroller = null;
 
-
     public WoWoViewPager(Context context) {
         super(context);
         init(context, null);

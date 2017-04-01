@@ -1,22 +1,21 @@
 package com.nightonke.wowoviewpager;
 
 import android.graphics.Color;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.content.ContextCompat;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * Created by Weiping on 2016/3/3.
+ * Created by Weiping Huang at 15:14 on 2016/3/3
+ * For Personal Open Source
+ * Contact me at 2584541288@qq.com or nightonke@outlook.com
+ * For more projects: https://github.com/Nightonke
+ *
  */
+
 public class WoWoViewPagerAdapter extends FragmentStatePagerAdapter {
 
     private ArrayList<WoWoViewPagerFragment> fragments;
@@ -88,64 +87,6 @@ public class WoWoViewPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public int getCount() {
         return fragmentsNumber;
-    }
-
-    public static class WoWoViewPagerFragment extends Fragment {
-
-        private Integer colorRes = null;
-        private Integer color = null;
-
-        public WoWoViewPagerFragment() {
-            this.colorRes = android.R.color.transparent;
-        }
-
-        public Integer getColorRes() {
-            return colorRes;
-        }
-
-        public void setColorRes(Integer colorRes) {
-            this.colorRes = colorRes;
-            color = null;
-        }
-
-        public Integer getColor() {
-            return color;
-        }
-
-        public void setColor(Integer color) {
-            this.color = color;
-            colorRes = null;
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            LinearLayout view = new LinearLayout(getActivity());
-            view.setLayoutParams(new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.MATCH_PARENT));
-            view.setOrientation(LinearLayout.VERTICAL);
-
-            if (colorRes != null) {
-                // the resource of color has been set
-                view.setBackgroundColor(ContextCompat.getColor(getActivity(), colorRes));
-            } else {
-                if (color != null) {
-                    // the color has been set
-                    view.setBackgroundColor(color);
-                } else {
-                    // set transparent
-                    view.setBackgroundColor(Color.TRANSPARENT);
-                }
-            }
-
-            return view;
-        }
-
-        @Override
-        public void onActivityCreated(Bundle savedInstanceState) {
-            super.onActivityCreated(savedInstanceState);
-        }
     }
 
     public int getColorRes() {
@@ -222,5 +163,67 @@ public class WoWoViewPagerAdapter extends FragmentStatePagerAdapter {
         colorRes = null;
         color = null;
         colorsRes = null;
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static class Builder {
+
+        private FragmentManager fragmentManager;
+        private int fragmentNumber = 0;
+        private Integer colorRes = null;
+        private Integer color = null;
+        private ArrayList<Integer> colorsRes = null;
+        private ArrayList<Integer> colors = null;
+
+        public Builder fragmentManager(FragmentManager fragmentManager) {
+            this.fragmentManager = fragmentManager;
+            return this;
+        }
+
+        public Builder count(int fragmentNumber) {
+            this.fragmentNumber = fragmentNumber;
+            return this;
+        }
+
+        public Builder colorRes(Integer colorRes) {
+            this.colorRes = colorRes;
+            return this;
+        }
+
+        public Builder color(Integer color) {
+            this.color = color;
+            return this;
+        }
+
+        public Builder colorsRes(ArrayList<Integer> colorsRes) {
+            this.colorsRes = colorsRes;
+            return this;
+        }
+
+        public Builder colorsRes(Integer... colorsRes) {
+            return colorsRes(new ArrayList<>(Arrays.asList(colorsRes)));
+        }
+
+        public Builder colors(ArrayList<Integer> colors) {
+            this.colors = colors;
+            return this;
+        }
+
+        public Builder colors(Integer... colors) {
+            return colors(new ArrayList<>(Arrays.asList(colors)));
+        }
+
+        public WoWoViewPagerAdapter build() {
+            WoWoViewPagerAdapter adapter = new WoWoViewPagerAdapter(fragmentManager);
+            adapter.setFragmentsNumber(fragmentNumber);
+            if (colorRes != null) adapter.setColorRes(colorRes);
+            if (color != null) adapter.setColor(color);
+            if (colorsRes != null) adapter.setColorsRes(colorsRes);
+            if (colors != null) adapter.setColors(colors);
+            return adapter;
+        }
     }
 }
