@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--For WoWoPathView-->
     <bool name="default_dashPath">true</bool>
     <dimen name="default_dashPathSegmentLength">20px</dimen>
     <dimen name="default_dashPathPaddingLength">10px</dimen>
@@ -11,5 +12,18 @@
     <integer name="default_headImageSrc">0</integer>
     <dimen name="default_headImageWidth">0dp</dimen>
     <dimen name="default_headImageHeight">0dp</dimen>
+
+    <!--ForWoWoSvgView-->
+    <dimen name="default_svgImageSizeX">512px</dimen>
+    <dimen name="default_svgImageSizeY">512px</dimen>
+    <integer name="default_svgTraceTime">2000</integer>
+    <integer name="default_svgTraceTimePerGlyph">1000</integer>
+    <integer name="default_svgFillStartTime">1200</integer>
+    <integer name="default_svgFillTime">1000</integer>
+    <dimen name="default_svgTraceMarkerLength">16dp</dimen>
+    <integer name="default_svgGlyphStrings">0</integer>
+    <integer name="default_svgTraceResidueColors">0</integer>
+    <integer name="default_svgTraceColors">0</integer>
+    <integer name="default_svgFillColors">0</integer>
 
 </resources>

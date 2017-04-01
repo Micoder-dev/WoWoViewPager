@@ -14,4 +14,18 @@
         <attr name="wowo_headImageHeight" format="dimension|reference"/>
     </declare-styleable>
 
+    <declare-styleable name="WoWoSvgView">
+        <attr name="wowo_imageSizeX" format="integer|reference"/>
+        <attr name="wowo_imageSizeY" format="integer|reference"/>
+        <attr name="wowo_traceTime" format="string|reference"/>
+        <attr name="wowo_traceTimePerGlyph" format="string|reference"/>
+        <attr name="wowo_fillStart" format="string|reference"/>
+        <attr name="wowo_fillTime" format="string|reference"/>
+        <attr name="wowo_glyphStrings" format="reference"/>
+        <attr name="wowo_traceColors" format="reference"/>
+        <attr name="wowo_traceResidueColors" format="reference"/>
+        <attr name="wowo_traceMarkerLength" format="dimension|reference"/>
+        <attr name="wowo_fillColors" format="reference"/>
+    </declare-styleable>
+
 </resources>

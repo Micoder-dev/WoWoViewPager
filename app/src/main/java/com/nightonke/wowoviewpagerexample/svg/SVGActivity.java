@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import com.nightonke.wowoviewpager.Animation.WoWoInterfaceAnimation;
 import com.nightonke.wowoviewpager.Animation.WoWoTranslationAnimation;
+import com.nightonke.wowoviewpager.svg.WoWoSvgView;
 import com.nightonke.wowoviewpagerexample.R;
 import com.nightonke.wowoviewpagerexample.WoWoActivity;
 
@@ -34,11 +35,11 @@ public class SVGActivity extends WoWoActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        AnimatedSvgView svgView0 = (AnimatedSvgView) findViewById(R.id.svg_0);
-        AnimatedSvgView svgView1 = (AnimatedSvgView) findViewById(R.id.svg_1);
-        AnimatedSvgView svgView2 = (AnimatedSvgView) findViewById(R.id.svg_2);
-        AnimatedSvgView svgView3 = (AnimatedSvgView) findViewById(R.id.svg_3);
-        AnimatedSvgView svgView4 = (AnimatedSvgView) findViewById(R.id.svg_4);
+        WoWoSvgView svgView0 = (WoWoSvgView) findViewById(R.id.svg_0);
+        WoWoSvgView svgView1 = (WoWoSvgView) findViewById(R.id.svg_1);
+        WoWoSvgView svgView2 = (WoWoSvgView) findViewById(R.id.svg_2);
+        WoWoSvgView svgView3 = (WoWoSvgView) findViewById(R.id.svg_3);
+        WoWoSvgView svgView4 = (WoWoSvgView) findViewById(R.id.svg_4);
 
         setSvg(svgView0, SVG.GOOGLE);
         setSvg(svgView1, SVG.GITHUB);
@@ -62,7 +63,7 @@ public class SVGActivity extends WoWoActivity {
                 .add(WoWoInterfaceAnimation.builder().page(4).implementedBy(svgView4).build());
     }
 
-    private void setSvg(AnimatedSvgView svgView, SVG svg) {
+    private void setSvg(WoWoSvgView svgView, SVG svg) {
         svgView.setGlyphStrings(svg.glyphs);
         svgView.setFillColors(svg.colors);
         svgView.setViewportSize(svg.width, svg.height);
@@ -71,6 +72,7 @@ public class SVGActivity extends WoWoActivity {
         svgView.setTraceTimePerGlyph(5000);
         svgView.setTraceTime(5000);
         svgView.setFillTime(5000);
+        svgView.setFillStart(8000);
         svgView.rebuildGlyphData();
     }
 }
