@@ -27,6 +27,8 @@
     <string name="view_pager_attributes">WoWoViewPager Attributes</string>
     <string name="gearbox">Gearbox of ViewPager</string>
     <string name="static_view_pager">Static ViewPager</string>
+    <string name="auto_scroll">Auto Scroll</string>
+    <string name="direction">Direction</string>
 
     <string name="interface_expansibility">Interface Expansibility</string>
     <string name="svg_expansibility">SVG</string>

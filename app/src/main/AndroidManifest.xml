@@ -71,6 +71,12 @@
         <activity
             android:name=".gif.GIFActivity"
             android:theme="@style/ShowAppTheme" />
+        <activity
+            android:name=".AutoScrollActivity"
+            android:theme="@style/ShowAppTheme" />
+        <activity
+            android:name=".DirectionActivity"
+            android:theme="@style/ShowAppTheme" />
     </application>
 
 </manifest>

@@ -1,7 +1,8 @@
 package com.nightonke.wowoviewpager;
 
 import android.content.Context;
-import android.support.v4.view.ViewPager;
+import android.os.Handler;
+import android.os.Message;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -12,6 +13,8 @@ import com.nightonke.wowoviewpager.Enum.Gearbox;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by Weiping Huang at 23:56 on 2016/3/3
@@ -21,7 +24,7 @@ import java.util.ArrayList;
  *
  */
 
-public class WoWoViewPager extends ViewPager {
+public class WoWoViewPager extends BaseViewPager {
 
     public static final String TAG = "WoWoViewPager";
 
@@ -38,6 +41,14 @@ public class WoWoViewPager extends ViewPager {
     private boolean easeReverse = false;
     private ArrayList<ViewAnimation> viewAnimations = new ArrayList<>();
     private WoWoScroller scroller = null;
+
+    // Scroll automatically
+    private boolean autoScroll = false;
+    private boolean touching = false;
+    private boolean touchThenStop = false;
+    private int delayPerPage = 1000;
+    private Timer autoScrollTimer = null;
+    private Handler autoScrollHandler;
 
     public WoWoViewPager(Context context) {
         super(context);
@@ -66,7 +77,7 @@ public class WoWoViewPager extends ViewPager {
     private void initScroller() {
         try {
             Field mScroller;
-            mScroller = ViewPager.class.getDeclaredField("mScroller");
+            mScroller = BaseViewPager.class.getDeclaredField("mScroller");
             mScroller.setAccessible(true);
             scroller = new WoWoScroller(this.getContext(), gearbox.interpolator());
             scroller.setDuration(scrollDuration);
@@ -101,6 +112,13 @@ public class WoWoViewPager extends ViewPager {
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
+        if (ev.getAction() == MotionEvent.ACTION_UP || ev.getAction() == MotionEvent.ACTION_CANCEL) {
+            touching = false;
+        } else if (ev.getAction() == MotionEvent.ACTION_DOWN || ev.getAction() == MotionEvent.ACTION_MOVE) {
+            stopAutoScrollTimer();
+            if (touchThenStop) stopAutoScroll();
+            touching = true;
+        }
         return draggable && super.onTouchEvent(ev);
     }
 
@@ -121,6 +139,7 @@ public class WoWoViewPager extends ViewPager {
         boolean still = nowOffset == lastOffset;
         boolean pageChanged = pageChanged(position);
         if (still) return;
+        if (offset == 0) checkWhetherAutoScroll(position);
         if (inOrder) direction = WoWoDirection.GoingRight;
         else if (reverse) direction = WoWoDirection.GoingLeft;
         if (pageChanged) {
@@ -133,9 +152,9 @@ public class WoWoViewPager extends ViewPager {
         lastOffset = nowOffset;
 
         for (int i = 0; i < viewAnimations.size(); i++) {
+            if (shouldForceAnimationToStartStateInNextPage) viewAnimations.get(i).forceAnimationToStartStateInNextPage(position + 1);
             viewAnimations.get(i).play(position, offset, direction == WoWoDirection.GoingRight, easeReverse);
             if (offset == 0 || (pageChanged && inOrder)) viewAnimations.get(i).forceAnimationToEndStateInPreviousPage(position - 1);
-            if (shouldForceAnimationToStartStateInNextPage) viewAnimations.get(i).forceAnimationToStartStateInNextPage(position + 1);
         }
     }
 
@@ -150,6 +169,41 @@ public class WoWoViewPager extends ViewPager {
         if (lastPage != currentPage) pageChanged = true;
         lastPage = currentPage;
         return pageChanged;
+    }
+
+    /**
+     * Check whether we should start the auto-scroll timer.
+     * This method should be call when the view-pager offset is zero(at the start of a page).
+     *
+     * @param position Position
+     */
+    private void checkWhetherAutoScroll(int position) {
+        if (position == getAdapter().getCount() - 1) stopAutoScroll();
+        else if (autoScroll) {
+            startAutoScrollTimer();
+        }
+    }
+
+    /**
+     * Start the auto-scroll timer.
+     */
+    private void startAutoScrollTimer() {
+        if (!autoScroll || touching) return;
+        if (autoScrollTimer != null) autoScrollTimer.cancel();
+        autoScrollTimer = new Timer();
+        autoScrollTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                if (autoScrollHandler != null) autoScrollHandler.obtainMessage().sendToTarget();
+            }
+        }, delayPerPage);
+    }
+
+    /**
+     * Stop the auto-scroll timer.
+     */
+    private void stopAutoScrollTimer() {
+        if (autoScrollTimer != null) autoScrollTimer.cancel();
     }
 
     /**
@@ -185,16 +239,32 @@ public class WoWoViewPager extends ViewPager {
 
     /**
      * Smoothly animating to next page.
+     * 
+     * @return Successfully or not
      */
-    public void next() {
-        if (lastOffsetIsInteger) setCurrentItem(getCurrentItem() + 1, true);
+    public boolean next() {
+        if (lastOffsetIsInteger) {
+            if (getCurrentItem() == getAdapter().getCount() - 1) return false;
+            else {
+                setCurrentItem(getCurrentItem() + 1, true);
+                return true;
+            }
+        } else return false;
     }
 
     /**
      * Smoothly animating to previous page.
+     * 
+     * @return Successfully or not
      */
-    public void previous() {
-        if (lastOffsetIsInteger) setCurrentItem(getCurrentItem() - 1, true);
+    public boolean previous() {
+        if (lastOffsetIsInteger) {
+            if (getCurrentItem() == 0) return false;
+            else {
+                setCurrentItem(getCurrentItem() - 1, true);
+                return true;
+            }
+        } else return false;
     }
 
     /**
@@ -288,4 +358,30 @@ public class WoWoViewPager extends ViewPager {
         if (viewAnimations == null) return;
         for (ViewAnimation viewAnimation : viewAnimations) viewAnimation.setUseSameEaseBack(useSameEaseEnumBack, page);
     }
+
+    public void startAutoScroll(boolean touchThenStop, int delayPerPage, int scrollDuration) {
+        if (autoScrollHandler == null) autoScrollHandler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                next();
+            }
+        };
+
+        stopAutoScrollTimer();
+        autoScroll = true;
+        this.touchThenStop = touchThenStop;
+        this.delayPerPage = delayPerPage;
+        setScrollDuration(scrollDuration);
+        startAutoScrollTimer();
+
+
+    }
+
+    public void stopAutoScroll() {
+        stopAutoScrollTimer();
+        setScrollDuration(-1);
+        autoScroll = false;
+    }
+
 }

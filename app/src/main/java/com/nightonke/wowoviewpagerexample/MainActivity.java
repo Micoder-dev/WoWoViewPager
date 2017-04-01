@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity
 
         findViewById(R.id.gearbox).setOnClickListener(this);
         findViewById(R.id.static_view_pager).setOnClickListener(this);
+        findViewById(R.id.auto_scroll).setOnClickListener(this);
+        findViewById(R.id.direction).setOnClickListener(this);
 
         findViewById(R.id.svg_expansibility).setOnClickListener(this);
         findViewById(R.id.gif_expansibility).setOnClickListener(this);
@@ -96,6 +98,12 @@ public class MainActivity extends AppCompatActivity
                 return;
             case R.id.static_view_pager:
                 startActivity(new Intent(this, StaticActivity.class));
+                return;
+            case R.id.auto_scroll:
+                startActivity(new Intent(this, AutoScrollActivity.class));
+                return;
+            case R.id.direction:
+                startActivity(new Intent(this, DirectionActivity.class));
                 return;
             case R.id.svg_expansibility:
                 startActivity(new Intent(this, SVGActivity.class));
