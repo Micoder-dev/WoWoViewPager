@@ -68,6 +68,9 @@
         <activity
             android:name=".svg.SVGActivity"
             android:theme="@style/ShowAppTheme" />
+        <activity
+            android:name=".gif.GIFActivity"
+            android:theme="@style/ShowAppTheme" />
     </application>
 
 </manifest>

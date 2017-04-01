@@ -28,4 +28,8 @@
         <attr name="wowo_fillColors" format="reference"/>
     </declare-styleable>
 
+    <declare-styleable name="WoWoGifView">
+        <attr name="wowo_src" format="reference"/>
+    </declare-styleable>
+
 </resources>

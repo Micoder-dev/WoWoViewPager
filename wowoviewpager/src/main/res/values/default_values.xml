@@ -26,4 +26,7 @@
     <integer name="default_svgTraceColors">0</integer>
     <integer name="default_svgFillColors">0</integer>
 
+    <!--WoWoGifView-->
+    <integer name="default_gifResource">0</integer>
+
 </resources>

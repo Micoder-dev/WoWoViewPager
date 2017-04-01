@@ -2,6 +2,7 @@ package com.nightonke.wowoviewpagerexample.svg;
 
 import android.os.Bundle;
 
+import com.nightonke.wowoviewpager.Animation.WoWoAlphaAnimation;
 import com.nightonke.wowoviewpager.Animation.WoWoInterfaceAnimation;
 import com.nightonke.wowoviewpager.Animation.WoWoTranslationAnimation;
 import com.nightonke.wowoviewpager.svg.WoWoSvgView;
@@ -49,18 +50,24 @@ public class SVGActivity extends WoWoActivity {
 
         wowo.addAnimation(svgView0)
                 .add(WoWoInterfaceAnimation.builder().page(0).implementedBy(svgView0).build())
-                .add(WoWoTranslationAnimation.builder().page(1).fromX(0).toX(-screenW).keepY(0).build());
+                .add(WoWoTranslationAnimation.builder().page(1).fromX(0).toX(-screenW).keepY(0).build())
+                .add(WoWoAlphaAnimation.builder().page(1).from(1).to(0).build());
         wowo.addAnimation(svgView1)
                 .add(WoWoInterfaceAnimation.builder().page(1).implementedBy(svgView1).build())
-                .add(WoWoTranslationAnimation.builder().page(2).fromX(0).toX(-screenW).keepY(0).build());
+                .add(WoWoTranslationAnimation.builder().page(2).fromX(0).toX(-screenW).keepY(0).build())
+                .add(WoWoAlphaAnimation.builder().page(2).from(1).to(0).build());
         wowo.addAnimation(svgView2)
                 .add(WoWoInterfaceAnimation.builder().page(2).implementedBy(svgView2).build())
-                .add(WoWoTranslationAnimation.builder().page(3).fromX(0).toX(-screenW).keepY(0).build());
+                .add(WoWoTranslationAnimation.builder().page(3).fromX(0).toX(-screenW).keepY(0).build())
+                .add(WoWoAlphaAnimation.builder().page(3).from(1).to(0).build());
         wowo.addAnimation(svgView3)
                 .add(WoWoInterfaceAnimation.builder().page(3).implementedBy(svgView3).build())
-                .add(WoWoTranslationAnimation.builder().page(4).fromX(0).toX(-screenW).keepY(0).build());
+                .add(WoWoTranslationAnimation.builder().page(4).fromX(0).toX(-screenW).keepY(0).build())
+                .add(WoWoAlphaAnimation.builder().page(4).from(1).to(0).build());
         wowo.addAnimation(svgView4)
                 .add(WoWoInterfaceAnimation.builder().page(4).implementedBy(svgView4).build());
+
+        wowo.ready();
     }
 
     private void setSvg(WoWoSvgView svgView, SVG svg) {

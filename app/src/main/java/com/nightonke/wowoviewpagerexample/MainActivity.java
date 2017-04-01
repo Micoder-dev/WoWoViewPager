@@ -9,6 +9,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.nightonke.wowoviewpagerexample.gif.GIFActivity;
 import com.nightonke.wowoviewpagerexample.svg.SVGActivity;
 
 public class MainActivity extends AppCompatActivity
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity
         findViewById(R.id.static_view_pager).setOnClickListener(this);
 
         findViewById(R.id.svg_expansibility).setOnClickListener(this);
+        findViewById(R.id.gif_expansibility).setOnClickListener(this);
 
         findViewById(R.id.cv_example).setOnClickListener(this);
         findViewById(R.id.guide_page_1).setOnClickListener(this);
@@ -97,6 +99,9 @@ public class MainActivity extends AppCompatActivity
                 return;
             case R.id.svg_expansibility:
                 startActivity(new Intent(this, SVGActivity.class));
+                return;
+            case R.id.gif_expansibility:
+                startActivity(new Intent(this, GIFActivity.class));
                 return;
             case R.id.guide_page_1:
                 startActivity(new Intent(this, GuidePageActivity1.class));
