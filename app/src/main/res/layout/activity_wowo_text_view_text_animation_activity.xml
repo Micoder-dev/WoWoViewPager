@@ -12,14 +12,32 @@
         />
 
     <TextView
-        android:id="@+id/test"
+        android:id="@+id/test0"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:gravity="center"
         android:textStyle="bold"
-        android:textSize="50sp"
-        android:layout_gravity="center_horizontal"
+        android:textSize="40sp"
+        />
+
+    <TextView
+        android:id="@+id/test1"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="40sp"
         android:layout_centerInParent="true"
+        />
+
+    <TextView
+        android:id="@+id/test2"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="40sp"
+        android:layout_alignParentBottom="true"
         />
 
     <TextView style="@style/PageIndexTextView" />
