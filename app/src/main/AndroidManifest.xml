@@ -77,6 +77,9 @@
         <activity
             android:name=".DirectionActivity"
             android:theme="@style/ShowAppTheme" />
+        <activity
+            android:name=".CustomAnimationActivity"
+            android:theme="@style/ShowAppTheme" />
     </application>
 
 </manifest>

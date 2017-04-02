@@ -43,6 +43,9 @@ public class GuidePageActivity1 extends WoWoActivity {
         super.onCreate(savedInstanceState);
 
         r = (int)Math.sqrt(screenW * screenW + screenH * screenH) + 10;
+
+        wowo.addTemporarilyInvisibleViews(1, findViewById(R.id.little_cloud), findViewById(R.id.big_cloud));
+        wowo.addTemporarilyInvisibleViews(2, findViewById(R.id.sun), findViewById(R.id.nightonke_cloud));
     }
 
     @Override
@@ -165,7 +168,6 @@ public class GuidePageActivity1 extends WoWoActivity {
 
     private void addBigCloudAnimation() {
         View bigCloud = findViewById(R.id.big_cloud);
-        bigCloud.setTranslationY(-screenH / 2);
         wowo.addAnimation(bigCloud)
                 .add(WoWoTranslationAnimation.builder().page(1)
                         .keepX(0)
@@ -177,7 +179,6 @@ public class GuidePageActivity1 extends WoWoActivity {
 
     private void addLittleCloudAnimation() {
         View littleCloud = findViewById(R.id.little_cloud);
-        littleCloud.setTranslationY(-screenH / 2);
         wowo.addAnimation(littleCloud)
                 .add(WoWoTranslationAnimation.builder().page(1)
                         .keepX(0)
@@ -223,8 +224,6 @@ public class GuidePageActivity1 extends WoWoActivity {
 
     private void addSunAnimation() {
         View sun = findViewById(R.id.sun);
-        sun.setTranslationX(screenW);
-        sun.setTranslationY(-screenW);
         wowo.addAnimation(sun)
                 .add(WoWoTranslationAnimation.builder().page(2)
                         .fromX(screenW).toX(0)
@@ -238,7 +237,6 @@ public class GuidePageActivity1 extends WoWoActivity {
 
     private void addNightonkeCloudAnimation() {
         View cloud = findViewById(R.id.nightonke_cloud);
-        cloud.setTranslationX(screenW);
         wowo.addAnimation(cloud)
                 .add(WoWoTranslationAnimation.builder().page(2)
                         .fromX(screenW).toX(0)

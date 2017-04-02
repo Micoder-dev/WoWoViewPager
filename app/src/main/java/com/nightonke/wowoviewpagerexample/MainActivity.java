@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity
 
         findViewById(R.id.svg_expansibility).setOnClickListener(this);
         findViewById(R.id.gif_expansibility).setOnClickListener(this);
+        findViewById(R.id.custom_animation).setOnClickListener(this);
 
         findViewById(R.id.cv_example).setOnClickListener(this);
         findViewById(R.id.guide_page_1).setOnClickListener(this);
@@ -111,6 +112,9 @@ public class MainActivity extends AppCompatActivity
             case R.id.gif_expansibility:
                 startActivity(new Intent(this, GIFActivity.class));
                 return;
+            case R.id.custom_animation:
+                intent.putExtra("AnimationType", "CustomAnimation");
+                break;
             case R.id.guide_page_1:
                 startActivity(new Intent(this, GuidePageActivity1.class));
                 return;

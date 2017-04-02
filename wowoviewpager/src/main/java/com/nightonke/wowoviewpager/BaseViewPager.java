@@ -71,7 +71,7 @@ import static android.support.v4.view.ViewPager.PageTransformer;
 @SuppressWarnings("unused")
 public class BaseViewPager extends ViewGroup {
 
-    private static final String TAG = "VerticalViewPager";
+    private static final String TAG = "BaseViewPager";
     private static final boolean DEBUG = false;
 
     private static final boolean USE_CACHE = false;
@@ -4087,5 +4087,13 @@ public class BaseViewPager extends ViewGroup {
 
     private boolean isHorizontalDirection() {
         return mDirection == Direction.Right || mDirection == Direction.Left;
+    }
+
+    public Scroller getScroller() {
+        return mScroller;
+    }
+
+    public void setScroller(Scroller mScroller) {
+        this.mScroller = mScroller;
     }
 }

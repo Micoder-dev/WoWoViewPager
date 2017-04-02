@@ -33,6 +33,7 @@
     <string name="interface_expansibility">Interface Expansibility</string>
     <string name="svg_expansibility">SVG</string>
     <string name="gif_expansibility">GIF</string>
+    <string name="custom_animation">Custom Animation</string>
 
     <string name="example">Examples</string>
     <string name="cv_example">CV Example</string>

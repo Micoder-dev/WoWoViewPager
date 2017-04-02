@@ -19,7 +19,7 @@ public abstract class PageAnimation {
     /**
      * Uninitialized value.
      */
-    static final float UNINITIALIZED_VALUE = Float.MAX_VALUE - 2584541288f;
+    protected static final float UNINITIALIZED_VALUE = Float.MAX_VALUE - 2584541288f;
 
     /**
      * The animation will be played when the (page + 1) page is starting to show.
@@ -223,13 +223,28 @@ public abstract class PageAnimation {
         easer = Easer.getInstance(ease);
     }
 
-    static abstract class Builder {
+    @SuppressWarnings("unchecked")
+    public static abstract class Builder<T> {
 
-        int page = 0;
-        float startOffset = 0;
-        float endOffset = 1;
-        Ease ease = Ease.Linear;
-        boolean useSameEaseEnumBack = true;
+        protected int page = 0;
+        protected float startOffset = 0;
+        protected float endOffset = 1;
+        protected Ease ease = Ease.Linear;
+        protected boolean useSameEaseEnumBack = true;
+
+        public T page(int page) { this.page = page; return (T)this; }
+
+        public T start(float startOffset) { this.startOffset = startOffset; return (T)this; }
+
+        public T start(double startOffset) { return start((float) startOffset); }
+
+        public T end(float endOffset) { this.endOffset = endOffset; return (T)this; }
+
+        public T end(double endOffset) { return end((float) endOffset); }
+
+        public T ease(Ease ease) { this.ease = ease; return (T)this; }
+
+        public T sameEaseBack(boolean useSameEaseEnumBack) { this.useSameEaseEnumBack = useSameEaseEnumBack; return (T)this; }
 
         /**
          * Check for some attributes which must be initialized.
@@ -241,7 +256,7 @@ public abstract class PageAnimation {
          *
          * @param attributeName Name of attribute
          */
-        void uninitializedAttributeException(String attributeName) {
+        protected void uninitializedAttributeException(String attributeName) {
             throw new RuntimeException("Attribute '" + attributeName + "' is not initialized!");
         }
     }

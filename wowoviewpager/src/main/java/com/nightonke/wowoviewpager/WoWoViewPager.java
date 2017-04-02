@@ -1,5 +1,6 @@
 package com.nightonke.wowoviewpager;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
@@ -11,8 +12,8 @@ import com.nightonke.wowoviewpager.Animation.ViewAnimation;
 import com.nightonke.wowoviewpager.Enum.Ease;
 import com.nightonke.wowoviewpager.Enum.Gearbox;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -50,6 +51,10 @@ public class WoWoViewPager extends BaseViewPager {
     private Timer autoScrollTimer = null;
     private Handler autoScrollHandler;
 
+    // Temporarily invisible views
+    private ArrayList<ArrayList<View>> temporarilyInvisibleViews;
+    private HashSet<Integer> reachedPages;
+
     public WoWoViewPager(Context context) {
         super(context);
         init(context, null);
@@ -68,6 +73,7 @@ public class WoWoViewPager extends BaseViewPager {
     private void init(Context context, AttributeSet attrs) {
         initAttrs(context, attrs);
         initScroller();
+        setOverScrollMode(OVER_SCROLL_NEVER);
     }
 
     private void initAttrs(Context context, AttributeSet attrs) {
@@ -75,16 +81,9 @@ public class WoWoViewPager extends BaseViewPager {
     }
 
     private void initScroller() {
-        try {
-            Field mScroller;
-            mScroller = BaseViewPager.class.getDeclaredField("mScroller");
-            mScroller.setAccessible(true);
-            scroller = new WoWoScroller(this.getContext(), gearbox.interpolator());
-            scroller.setDuration(scrollDuration);
-            mScroller.set(this, scroller);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        scroller = new WoWoScroller(this.getContext(), gearbox.interpolator());
+        scroller.setDuration(scrollDuration);
+        setScroller(scroller);
     }
 
     /**
@@ -143,6 +142,8 @@ public class WoWoViewPager extends BaseViewPager {
         if (inOrder) direction = WoWoDirection.GoingRight;
         else if (reverse) direction = WoWoDirection.GoingLeft;
         if (pageChanged) {
+            visualizeViews(position);
+            addReachPage(position);
             if (reverse) {
                 if (offset != 0) shouldForceAnimationToStartStateInNextPage = true;  // Logic A
                 easeReverse = true;
@@ -204,6 +205,27 @@ public class WoWoViewPager extends BaseViewPager {
      */
     private void stopAutoScrollTimer() {
         if (autoScrollTimer != null) autoScrollTimer.cancel();
+    }
+
+    /**
+     * Visualize views that should be visible when WoWoViewPager is scrolling.
+     *
+     * @param page Page
+     */
+    private void visualizeViews(int page) {
+        if (reachedPages != null && reachedPages.contains(page)) return;
+        if (temporarilyInvisibleViews == null || page >= temporarilyInvisibleViews.size()) return;
+        for (View view : temporarilyInvisibleViews.get(page)) view.setVisibility(VISIBLE);
+    }
+
+    /**
+     * Record a page as reached.
+     *
+     * @param page Page
+     */
+    private void addReachPage(int page) {
+        if (reachedPages == null) reachedPages = new HashSet<>(getAdapter().getCount());
+        reachedPages.add(page);
     }
 
     /**
@@ -359,6 +381,14 @@ public class WoWoViewPager extends BaseViewPager {
         for (ViewAnimation viewAnimation : viewAnimations) viewAnimation.setUseSameEaseBack(useSameEaseEnumBack, page);
     }
 
+    /**
+     * Start scroll automatically.
+     *
+     * @param touchThenStop If WoWoViewPager is touched, then stop scrolling automatically
+     * @param delayPerPage Delay time when a page is scrolled to.
+     * @param scrollDuration Scroll-duration for each page.
+     */
+    @SuppressLint("HandlerLeak")
     public void startAutoScroll(boolean touchThenStop, int delayPerPage, int scrollDuration) {
         if (autoScrollHandler == null) autoScrollHandler = new Handler() {
             @Override
@@ -374,14 +404,40 @@ public class WoWoViewPager extends BaseViewPager {
         this.delayPerPage = delayPerPage;
         setScrollDuration(scrollDuration);
         startAutoScrollTimer();
-
-
     }
 
+    /**
+     * Stop the auto-scroll.
+     */
     public void stopAutoScroll() {
         stopAutoScrollTimer();
         setScrollDuration(-1);
         autoScroll = false;
     }
 
+    /**
+     * Add temporarily invisible views.
+     * For some situation, like using translation-animation to animate a view from screen-outside
+     * to screen-inside. We have to set the view screen-outside initially, which may causes a
+     * flash of the view.
+     * So we use this method to make these views invisible in onCreate method, then WoWoViewPager
+     * makes these views visible when it's scrolled to the animation-starting-page of them.
+     *
+     * @param page Animation starting page
+     * @param views The views need to be temporarily invisible
+     * @return WoWoViewPager itself
+     */
+    public WoWoViewPager addTemporarilyInvisibleViews(int page, View... views) {
+        if (temporarilyInvisibleViews == null) {
+            temporarilyInvisibleViews = new ArrayList<>(page + 1);
+        }
+        while (temporarilyInvisibleViews.size() < page + 1) temporarilyInvisibleViews.add(new ArrayList<View>());
+        for (View view : views) {
+            if (view != null) {
+                view.setVisibility(INVISIBLE);
+                temporarilyInvisibleViews.get(page).add(view);
+            }
+        }
+        return this;
+    }
 }
