@@ -1,16 +1,23 @@
 package com.nightonke.wowoviewpager.Animation;
 
+import android.graphics.Color;
+
 import com.nightonke.wowoviewpager.Enum.Chameleon;
 import com.nightonke.wowoviewpager.Enum.Ease;
+
+import java.util.List;
 
 /**
  * Created by Weiping Huang at 12:07 on 2017/3/30
  * For Personal Open Source
  * Contact me at 2584541288@qq.com or nightonke@outlook.com
  * For more projects: https://github.com/Nightonke
+ *
+ * Use as an abstract class of multi-color transformation animations.
+ * Check {@link WoWoLayerListColorAnimation} and {@link WoWoStateListColorAnimation} as examples.
  */
 
-abstract class MultiColorPageAnimation extends PageAnimation {
+public abstract class MultiColorPageAnimation extends PageAnimation {
 
     int[] fromColors = null;
     int[] toColors = null;
@@ -66,11 +73,50 @@ abstract class MultiColorPageAnimation extends PageAnimation {
         }
     }
 
-    static class Builder extends PageAnimation.Builder {
+    @SuppressWarnings("unchecked")
+    public static class Builder<T> extends PageAnimation.Builder<T> {
 
-        int[] fromColors = null;
-        int[] toColors = null;
-        Chameleon chameleon = Chameleon.RGB;
+        protected int[] fromColors = null;
+        protected int[] toColors = null;
+        protected Chameleon chameleon = Chameleon.RGB;
+
+        public T from(int... fromColors) { this.fromColors = fromColors; return (T) this; }
+
+        public T from(String... fromColors) {
+            this.fromColors = new int[fromColors.length];
+            for (int i = 0; i < fromColors.length; i++) this.fromColors[i] = Color.parseColor(fromColors[i]);
+            return (T) this;
+        }
+
+        public T from(List<Object> fromColors) {
+            this.fromColors = new int[fromColors.size()];
+            for (int i = 0; i < fromColors.size(); i++) {
+                Object color = fromColors.get(i);
+                if (color instanceof Integer) this.fromColors[i] = (int) color;
+                else if (color instanceof String) this.fromColors[i] = Color.parseColor((String) color);
+            }
+            return (T) this;
+        }
+
+        public T to(int... toColors) { this.toColors = toColors; return (T) this; }
+
+        public T to(String... toColors) {
+            this.toColors = new int[toColors.length];
+            for (int i = 0; i < toColors.length; i++) this.toColors[i] = Color.parseColor(toColors[i]);
+            return (T) this;
+        }
+
+        public T to(List<Object> toColors) {
+            this.toColors = new int[toColors.size()];
+            for (int i = 0; i < toColors.size(); i++) {
+                Object color = toColors.get(i);
+                if (color instanceof Integer) this.toColors[i] = (int) color;
+                else if (color instanceof String) this.toColors[i] = Color.parseColor((String) color);
+            }
+            return (T) this;
+        }
+
+        public T chameleon(Chameleon chameleon) { this.chameleon = chameleon; return (T) this; }
 
         @Override
         protected void checkUninitializedAttributes() {

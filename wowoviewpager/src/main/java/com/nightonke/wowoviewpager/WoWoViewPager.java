@@ -35,7 +35,6 @@ public class WoWoViewPager extends BaseViewPager {
     private int scrollDuration = -1;
 
     // Inner attributes
-    private WoWoDirection direction = WoWoDirection.Unknown;
     private float lastOffset = -1;
     private int lastPage = -1;
     private boolean lastOffsetIsInteger = true;
@@ -139,8 +138,6 @@ public class WoWoViewPager extends BaseViewPager {
         boolean pageChanged = pageChanged(position);
         if (still) return;
         if (offset == 0) checkWhetherAutoScroll(position);
-        if (inOrder) direction = WoWoDirection.GoingRight;
-        else if (reverse) direction = WoWoDirection.GoingLeft;
         if (pageChanged) {
             visualizeViews(position);
             addReachPage(position);
@@ -154,7 +151,7 @@ public class WoWoViewPager extends BaseViewPager {
 
         for (int i = 0; i < viewAnimations.size(); i++) {
             if (shouldForceAnimationToStartStateInNextPage) viewAnimations.get(i).forceAnimationToStartStateInNextPage(position + 1);
-            viewAnimations.get(i).play(position, offset, direction == WoWoDirection.GoingRight, easeReverse);
+            viewAnimations.get(i).play(position, offset, easeReverse);
             if (offset == 0 || (pageChanged && inOrder)) viewAnimations.get(i).forceAnimationToEndStateInPreviousPage(position - 1);
         }
     }

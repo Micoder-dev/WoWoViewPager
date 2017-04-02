@@ -129,11 +129,10 @@ public abstract class PageAnimation {
      *
      * @param view Animation-playing-view
      * @param offset Offset of the view-pager
-     * @param upstreamFirst Upstream has the priority
      * @param easeReverse Only this value is true, we calculate the ease-offset reversely
      * @return True to stop the next page-animation to play.
      */
-    boolean play(View view, float offset, boolean upstreamFirst, boolean easeReverse) {
+    boolean play(View view, float offset, boolean easeReverse) {
         // if the offset is less than the start offset,
         // we should set the view to start-state.
         if (offset <= startOffset) {

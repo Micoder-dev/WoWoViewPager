@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-
 /**
  * Created by Weiping Huang at 15:16 on 2017/4/1
  * For Personal Open Source
@@ -18,6 +17,7 @@ import android.widget.LinearLayout;
  */
 
 public class WoWoViewPagerFragment extends Fragment {
+
     private Integer colorRes = null;
     private Integer color = null;
 
@@ -46,11 +46,10 @@ public class WoWoViewPagerFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        LinearLayout view = new LinearLayout(getActivity());
-        view.setLayoutParams(new LinearLayout.LayoutParams(
+        View view = new View(getContext());
+        view.setLayoutParams(new ViewGroup.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT));
-        view.setOrientation(LinearLayout.VERTICAL);
 
         if (colorRes != null) {
             // the resource of color has been set

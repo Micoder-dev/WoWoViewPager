@@ -55,24 +55,10 @@ public class WoWoAlphaAnimation extends PageAnimation {
         return new Builder();
     }
 
-    public static class Builder extends PageAnimation.Builder {
+    public static class Builder extends PageAnimation.Builder<WoWoAlphaAnimation.Builder> {
 
         private float fromAlpha = UNINITIALIZED_VALUE;
         private float toAlpha = UNINITIALIZED_VALUE;
-
-        public Builder page(int page) { this.page = page; return this; }
-
-        public Builder start(float startOffset) { this.startOffset = startOffset; return this; }
-
-        public Builder start(double startOffset) { return start((float) startOffset); }
-
-        public Builder end(float endOffset) { this.endOffset = endOffset; return this; }
-
-        public Builder end(double endOffset) { return end((float) endOffset); }
-
-        public Builder ease(Ease ease) { this.ease = ease; return this; }
-
-        public Builder sameEaseBack(boolean useSameEaseEnumBack) { this.useSameEaseEnumBack = useSameEaseEnumBack; return this; }
 
         public Builder from(float fromAlpha) { this.fromAlpha = fromAlpha; return this; }
 

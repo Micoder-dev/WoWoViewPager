@@ -13,11 +13,12 @@ import android.view.animation.Interpolator;
 
 public enum Gearbox {
 
+    ZERO(0),
     Positive1(1),
     Positive2(2),
     Positive3(3),
     Positive4(4),
-    Positive5(5),
+    Positive5(5),  // Default value as ViewPager
     Positive6(6),
     Positive7(7);
 

@@ -1,6 +1,5 @@
 package com.nightonke.wowoviewpager.Animation;
 
-import android.graphics.Color;
 import android.view.View;
 
 import com.nightonke.wowoviewpager.Enum.Chameleon;
@@ -52,31 +51,7 @@ public class WoWoBackgroundColorAnimation extends SingleColorPageAnimation {
         return new Builder();
     }
 
-    public static class Builder extends SingleColorPageAnimation.Builder {
-
-        public Builder page(int page) { this.page = page; return this; }
-
-        public Builder start(float startOffset) { this.startOffset = startOffset; return this; }
-
-        public Builder start(double startOffset) { return start((float) startOffset); }
-
-        public Builder end(float endOffset) { this.endOffset = endOffset; return this; }
-
-        public Builder end(double endOffset) { return end((float) endOffset); }
-
-        public Builder ease(Ease ease) { this.ease = ease; return this; }
-
-        public Builder sameEaseBack(boolean useSameEaseEnumBack) { this.useSameEaseEnumBack = useSameEaseEnumBack; return this; }
-
-        public Builder from(Integer fromColor) { this.fromColor = fromColor; return this; }
-
-        public Builder from(String fromColor) { return from(Color.parseColor(fromColor)); }
-
-        public Builder to(Integer toColor) { this.toColor = toColor; return this; }
-
-        public Builder to(String toColor) { return to(Color.parseColor(toColor)); }
-
-        public Builder chameleon(Chameleon chameleon) { this.chameleon = chameleon; return this; }
+    public static class Builder extends SingleColorPageAnimation.Builder<WoWoBackgroundColorAnimation.Builder> {
 
         public WoWoBackgroundColorAnimation build() {
             checkUninitializedAttributes();

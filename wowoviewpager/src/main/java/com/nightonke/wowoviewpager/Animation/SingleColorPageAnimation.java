@@ -1,5 +1,7 @@
 package com.nightonke.wowoviewpager.Animation;
 
+import android.graphics.Color;
+
 import com.nightonke.wowoviewpager.Enum.Chameleon;
 import com.nightonke.wowoviewpager.Enum.Ease;
 
@@ -8,9 +10,12 @@ import com.nightonke.wowoviewpager.Enum.Ease;
  * For Personal Open Source
  * Contact me at 2584541288@qq.com or nightonke@outlook.com
  * For more projects: https://github.com/Nightonke
+ *
+ * Use as an abstract class of single-color transformation animations.
+ * Check {@link WoWoBackgroundColorAnimation} and {@link WoWoShapeColorAnimation} as examples.
  */
 
-abstract class SingleColorPageAnimation extends PageAnimation {
+public abstract class SingleColorPageAnimation extends PageAnimation {
 
     Integer fromColor = null;
     Integer toColor = null;
@@ -66,11 +71,22 @@ abstract class SingleColorPageAnimation extends PageAnimation {
         return Chameleon.getHSVColor(fromHSVArray, toHSVArray, offset);
     }
 
-    static class Builder extends PageAnimation.Builder {
+    @SuppressWarnings("unchecked")
+    public static class Builder<T> extends PageAnimation.Builder<T> {
 
-        Integer fromColor = null;
-        Integer toColor = null;
-        Chameleon chameleon = Chameleon.RGB;
+        protected Integer fromColor = null;
+        protected Integer toColor = null;
+        protected Chameleon chameleon = Chameleon.RGB;
+
+        public T from(Integer fromColor) { this.fromColor = fromColor; return (T) this; }
+
+        public T from(String fromColor) { return from(Color.parseColor(fromColor)); }
+
+        public T to(Integer toColor) { this.toColor = toColor; return (T) this; }
+
+        public T to(String toColor) { return to(Color.parseColor(toColor)); }
+
+        public T chameleon(Chameleon chameleon) { this.chameleon = chameleon; return (T) this; }
 
         @Override
         protected void checkUninitializedAttributes() {

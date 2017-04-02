@@ -57,25 +57,11 @@ public class WoWoTextViewTextAnimation extends PageAnimation {
         return new Builder();
     }
 
-    public static class Builder extends PageAnimation.Builder {
+    public static class Builder extends PageAnimation.Builder<WoWoTextViewTextAnimation.Builder> {
 
         private String fromText = null;
         private String toText = null;
         private Typewriter typewriter = Typewriter.DeleteThenType;
-
-        public Builder page(int page) { this.page = page; return this; }
-
-        public Builder start(float startOffset) { this.startOffset = startOffset; return this; }
-
-        public Builder start(double startOffset) { return start((float) startOffset); }
-
-        public Builder end(float endOffset) { this.endOffset = endOffset; return this; }
-
-        public Builder end(double endOffset) { return end((float) endOffset); }
-
-        public Builder ease(Ease ease) { this.ease = ease; return this; }
-
-        public Builder sameEaseBack(boolean useSameEaseEnumBack) { this.useSameEaseEnumBack = useSameEaseEnumBack; return this; }
 
         public Builder from(String fromText) { this.fromText = fromText; return this; }
 

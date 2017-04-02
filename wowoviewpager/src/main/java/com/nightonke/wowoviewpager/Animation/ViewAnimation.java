@@ -55,15 +55,15 @@ public class ViewAnimation {
      *
      * @param page The starting page, corresponding animations will end at page + 1
      * @param offset The offset of the animation
-     * @param upstreamFirst Upstream first
      */
-    public void play(int page, float offset, boolean upstreamFirst, boolean easeReverse) {
+    public void play(int page, float offset, boolean easeReverse) {
         if (pageAnimations == null || page >= pageAnimations.size() || page < 0) return;
         ArrayList<PageAnimation> pageAnimationsInSamePage = pageAnimations.get(page);
         if (pageAnimationsInSamePage != null) {
             for (PageAnimation pageAnimation : pageAnimationsInSamePage) {
-                if (pageAnimation.play(view, offset, upstreamFirst, easeReverse)) return;
+                if (pageAnimation.play(view, offset, easeReverse)) return;
             }
+// Keep this comment as an old implement.
 //            if (upstreamFirst) {
 //                for (PageAnimation pageAnimation : pageAnimationsInSamePage) {
 //                    if (pageAnimation.play(view, offset, upstreamFirst, easeReverse)) return;

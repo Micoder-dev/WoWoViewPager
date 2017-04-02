@@ -40,7 +40,7 @@ public class GearboxActivity extends GuidePageActivity1 {
 
             }
         });
-        seekBar.setProgress(wowo.getGearbox().value() - 1);
+        seekBar.setProgress(wowo.getGearbox().value());
         base.addView(seekBar);
     }
 }
