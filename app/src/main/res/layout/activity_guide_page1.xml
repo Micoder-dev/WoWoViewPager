@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
+    android:background="@color/black_background"
     tools:context="com.nightonke.wowoviewpagerexample.GuidePageActivity1">
 
     <com.nightonke.wowoviewpager.WoWoViewPager

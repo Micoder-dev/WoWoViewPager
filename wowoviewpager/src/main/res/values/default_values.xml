@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <integer name="default_gearbox">1</integer>
+    <bool name="default_draggable">true</bool>
+    <integer name="default_scrollDuration">-1</integer>
+    <integer name="default_direction">0</integer>
+
     <!--For WoWoPathView-->
     <bool name="default_dashPath">true</bool>
     <dimen name="default_dashPathSegmentLength">20px</dimen>

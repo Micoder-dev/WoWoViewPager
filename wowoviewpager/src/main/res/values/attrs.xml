@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    
+    <declare-styleable name="WoWoViewPager">
+        <attr name="wowo_gearbox" format="enum|reference">
+            <enum name="zero" value="0"/>
+            <enum name="positive1" value="1"/>
+            <enum name="positive2" value="2"/>
+            <enum name="positive3" value="3"/>
+            <enum name="positive4" value="4"/>
+            <enum name="positive5" value="5"/>
+            <enum name="positive6" value="6"/>
+            <enum name="positive7" value="7"/>
+        </attr>
+        <attr name="wowo_draggable" format="boolean|reference"/>
+        <attr name="wowo_scrollDuration" format="integer|reference"/>
+        <attr name="wowo_direction" format="enum|reference">
+            <enum name="horizontal" value="0"/>
+            <enum name="vertical" value="1"/>
+        </attr>
+    </declare-styleable>
 
     <declare-styleable name="WoWoPathView">
         <attr name="wowo_dashPath" format="boolean|reference"/>

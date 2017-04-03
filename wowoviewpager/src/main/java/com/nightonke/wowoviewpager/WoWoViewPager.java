@@ -2,6 +2,7 @@ package com.nightonke.wowoviewpager;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
@@ -29,10 +30,14 @@ public class WoWoViewPager extends BaseViewPager {
 
     public static final String TAG = "WoWoViewPager";
 
+    public static final int Horizontal = 0;
+    public static final int Vertical = 1;
+
     // Public attributes
-    private Gearbox gearbox = Gearbox.Positive3;
+    private Gearbox gearbox = Gearbox.Positive1;
     private boolean draggable = true;
     private int scrollDuration = -1;
+    private int direction = Horizontal;
 
     // Inner attributes
     private float lastOffset = -1;
@@ -76,7 +81,16 @@ public class WoWoViewPager extends BaseViewPager {
     }
 
     private void initAttrs(Context context, AttributeSet attrs) {
-
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.WoWoViewPager, 0, 0);
+        if (typedArray == null) return;
+        try {
+            gearbox = Gearbox.values()[typedArray.getInteger(R.styleable.WoWoViewPager_wowo_gearbox, context.getResources().getInteger(R.integer.default_gearbox))];
+            draggable = typedArray.getBoolean(R.styleable.WoWoViewPager_wowo_draggable, context.getResources().getBoolean(R.bool.default_draggable));
+            scrollDuration = typedArray.getInteger(R.styleable.WoWoViewPager_wowo_scrollDuration, context.getResources().getInteger(R.integer.default_scrollDuration));
+            direction = typedArray.getInteger(R.styleable.WoWoViewPager_wowo_direction, context.getResources().getInteger(R.integer.default_direction));
+        } finally {
+            typedArray.recycle();
+        }
     }
 
     private void initScroller() {
@@ -342,6 +356,27 @@ public class WoWoViewPager extends BaseViewPager {
         this.scrollDuration = scrollDuration;
         if (scroller == null) initScroller();
         else scroller.setDuration(this.scrollDuration);
+    }
+
+    /**
+     * @return The scroll direction of WoWoViewPager,
+     * {@link WoWoViewPager#Horizontal} for horizontal,
+     * {@link WoWoViewPager#Vertical} for vertical.
+     */
+    public int getDirection() { return direction; }
+
+    /**
+     * Set the scroll direction of WoWoViewPager,
+     * {@link WoWoViewPager#Horizontal} for horizontal,
+     * {@link WoWoViewPager#Vertical} for vertical.
+     *
+     * @param direction Direction
+     */
+    public void setDirection(int direction) {
+        if (this.direction == direction) return;
+        this.direction = direction;
+        if (this.direction == Horizontal) super.setDirection(Direction.Right);
+        else if (this.direction == Vertical) super.setDirection(Direction.Up);
     }
 
     /**

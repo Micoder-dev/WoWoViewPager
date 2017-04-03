@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
-import com.nightonke.wowoviewpager.BaseViewPager;
+import com.nightonke.wowoviewpager.WoWoViewPager;
 
 public class DirectionActivity extends GuidePageActivity1 {
 
@@ -28,10 +28,10 @@ public class DirectionActivity extends GuidePageActivity1 {
         directionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (wowo.getDirection() == BaseViewPager.Direction.Up) {
-                    wowo.setDirection(BaseViewPager.Direction.Right);
+                if (wowo.getDirection() == WoWoViewPager.Horizontal) {
+                    wowo.setDirection(WoWoViewPager.Vertical);
                 } else {
-                    wowo.setDirection(BaseViewPager.Direction.Up);
+                    wowo.setDirection(WoWoViewPager.Horizontal);
                 }
             }
         });

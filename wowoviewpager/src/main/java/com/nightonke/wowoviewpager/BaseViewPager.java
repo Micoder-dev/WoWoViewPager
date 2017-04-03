@@ -69,7 +69,7 @@ import static android.support.v4.view.ViewPager.PageTransformer;
  */
 
 @SuppressWarnings("unused")
-public class BaseViewPager extends ViewGroup {
+class BaseViewPager extends ViewGroup {
 
     private static final String TAG = "BaseViewPager";
     private static final boolean DEBUG = false;
@@ -4069,15 +4069,11 @@ public class BaseViewPager extends ViewGroup {
         }
     }
 
-    public enum Direction {
+    protected enum Direction {
         Right, Left, Up, Down
     }
 
-    public Direction getDirection() {
-        return mDirection;
-    }
-
-    public void setDirection(Direction mDirection) {
+    protected void setDirection(Direction mDirection) {
         this.mDirection = mDirection;
     }
 
@@ -4089,11 +4085,11 @@ public class BaseViewPager extends ViewGroup {
         return mDirection == Direction.Right || mDirection == Direction.Left;
     }
 
-    public Scroller getScroller() {
+    protected Scroller getScroller() {
         return mScroller;
     }
 
-    public void setScroller(Scroller mScroller) {
+    protected void setScroller(Scroller mScroller) {
         this.mScroller = mScroller;
     }
 }
