@@ -116,4 +116,12 @@ public abstract class WoWoActivity extends AppCompatActivity {
             case 30: ease = Ease.InOutBounce; break;
         }
     }
+
+    protected int dp2px(float dp) {
+        return WoWoUtil.dp2px((int) dp, this);
+    }
+
+    protected int dp2px(double dp) {
+        return WoWoUtil.dp2px((int) dp, this);
+    }
 }

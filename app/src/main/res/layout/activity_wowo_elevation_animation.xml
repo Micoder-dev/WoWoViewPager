@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.nightonke.wowoviewpagerexample.CustomAnimationActivity">
+    tools:context="com.nightonke.wowoviewpagerexample.WoWoElevationAnimationActivity">
 
     <com.nightonke.wowoviewpager.WoWoViewPager
         android:id="@+id/wowo_viewpager"

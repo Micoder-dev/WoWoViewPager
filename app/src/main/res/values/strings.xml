@@ -7,6 +7,7 @@
     <string name="wowo_scale_animation">Scale Animation</string>
     <string name="wowo_alpha_animation">Alpha Animation</string>
     <string name="wowo_rotation_animation">Rotation Animation</string>
+    <string name="wowo_elevation_animation">Elevation Animation</string>
 
     <string name="text_view_animations">TextView Animations</string>
     <string name="wowo_text_view_text_size_animation">TextView TextSize Animation</string>
@@ -36,7 +37,6 @@
     <string name="custom_animation">Custom Animation</string>
 
     <string name="example">Examples</string>
-    <string name="cv_example">CV Example</string>
     <string name="guide_page_1">Guide Page Example 1</string>
     <string name="guide_page_2">Guide Page Example 2</string>
 

@@ -139,13 +139,14 @@ public class WoWoViewPager extends BaseViewPager {
         if (still) return;
         if (offset == 0) checkWhetherAutoScroll(position);
         if (pageChanged) {
-            visualizeViews(position);
-            addReachPage(position);
             if (reverse) {
                 if (offset != 0) shouldForceAnimationToStartStateInNextPage = true;  // Logic A
                 easeReverse = true;
             } else easeReverse = false;
         }
+        // When back to the starting of a page,
+        // the ease-is-reverse should be reset
+        if (offset == 0) easeReverse = false;
         lastOffsetIsInteger = offset == 0;
         lastOffset = nowOffset;
 
@@ -153,6 +154,13 @@ public class WoWoViewPager extends BaseViewPager {
             if (shouldForceAnimationToStartStateInNextPage) viewAnimations.get(i).forceAnimationToStartStateInNextPage(position + 1);
             viewAnimations.get(i).play(position, offset, easeReverse);
             if (offset == 0 || (pageChanged && inOrder)) viewAnimations.get(i).forceAnimationToEndStateInPreviousPage(position - 1);
+        }
+
+        // Put the visualize-views job after the animations.
+        // Then the views stay in right position without flash.
+        if (pageChanged) {
+            visualizeViews(position);
+            addReachPage(position);
         }
     }
 

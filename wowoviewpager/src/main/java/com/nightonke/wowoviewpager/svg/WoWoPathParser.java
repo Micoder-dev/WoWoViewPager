@@ -144,9 +144,7 @@ class WoWoPathParser {
     public static void updateNodes(PathDataNode[] target, PathDataNode[] source) {
         for (int i = 0; i < source.length; i++) {
             target[i].type = source[i].type;
-            for (int j = 0; j < source[i].params.length; j++) {
-                target[i].params[j] = source[i].params[j];
-            }
+            System.arraycopy(source[i].params, 0, target[i].params, 0, source[i].params.length);
         }
     }
 

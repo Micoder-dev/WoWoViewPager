@@ -12,43 +12,42 @@ import android.view.View;
 import com.nightonke.wowoviewpagerexample.gif.GIFActivity;
 import com.nightonke.wowoviewpagerexample.svg.SVGActivity;
 
-public class MainActivity extends AppCompatActivity
-        implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        findViewById(R.id.wowo_position_animation).setOnClickListener(this);
-        findViewById(R.id.wowo_translation_animation).setOnClickListener(this);
-        findViewById(R.id.wowo_scale_animation).setOnClickListener(this);
-        findViewById(R.id.wowo_alpha_animation).setOnClickListener(this);
-        findViewById(R.id.wowo_rotation_animation).setOnClickListener(this);
+        setThisAsOnClickListener(
+                R.id.wowo_position_animation,
+                R.id.wowo_translation_animation,
+                R.id.wowo_scale_animation,
+                R.id.wowo_alpha_animation,
+                R.id.wowo_rotation_animation,
+                R.id.wowo_elevation_animation,
+                R.id.wowo_text_view_text_size_animation,
+                R.id.wowo_text_view_color_animation,
+                R.id.wowo_text_view_text_animation,
+                R.id.wowo_background_color_animation,
+                R.id.wowo_drawable_color_animation,
+                R.id.wowo_layer_list_color_animation,
+                R.id.wowo_state_list_color_animation,
+                R.id.wowo_path_animation,
+                R.id.gearbox,
+                R.id.static_view_pager,
+                R.id.auto_scroll,
+                R.id.direction,
+                R.id.svg_expansibility,
+                R.id.gif_expansibility,
+                R.id.custom_animation,
+                R.id.guide_page_1,
+                R.id.guide_page_2
+        );
+    }
 
-        findViewById(R.id.wowo_text_view_text_size_animation).setOnClickListener(this);
-        findViewById(R.id.wowo_text_view_color_animation).setOnClickListener(this);
-        findViewById(R.id.wowo_text_view_text_animation).setOnClickListener(this);
-
-        findViewById(R.id.wowo_background_color_animation).setOnClickListener(this);
-        findViewById(R.id.wowo_drawable_color_animation).setOnClickListener(this);
-        findViewById(R.id.wowo_layer_list_color_animation).setOnClickListener(this);
-        findViewById(R.id.wowo_state_list_color_animation).setOnClickListener(this);
-
-        findViewById(R.id.wowo_path_animation).setOnClickListener(this);
-
-        findViewById(R.id.gearbox).setOnClickListener(this);
-        findViewById(R.id.static_view_pager).setOnClickListener(this);
-        findViewById(R.id.auto_scroll).setOnClickListener(this);
-        findViewById(R.id.direction).setOnClickListener(this);
-
-        findViewById(R.id.svg_expansibility).setOnClickListener(this);
-        findViewById(R.id.gif_expansibility).setOnClickListener(this);
-        findViewById(R.id.custom_animation).setOnClickListener(this);
-
-        findViewById(R.id.cv_example).setOnClickListener(this);
-        findViewById(R.id.guide_page_1).setOnClickListener(this);
-        findViewById(R.id.guide_page_2).setOnClickListener(this);
+    private void setThisAsOnClickListener(int... resourceIds) {
+        for (int res : resourceIds) findViewById(res).setOnClickListener(this);
     }
 
     @Override
@@ -69,6 +68,9 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.wowo_rotation_animation:
                 intent.putExtra("AnimationType", "WoWoRotationAnimation");
+                break;
+            case R.id.wowo_elevation_animation:
+                intent.putExtra("AnimationType", "WoWoElevationAnimation");
                 break;
             case R.id.wowo_text_view_text_size_animation:
                 intent.putExtra("AnimationType", "WoWoTextViewTextSizeAnimation");
@@ -119,7 +121,7 @@ public class MainActivity extends AppCompatActivity
                 startActivity(new Intent(this, GuidePageActivity1.class));
                 return;
             case R.id.guide_page_2:
-
+                startActivity(new Intent(this, GuidePageActivity2.class));
                 return;
         }
         startActivity(intent);
@@ -141,7 +143,7 @@ public class MainActivity extends AppCompatActivity
                 return true;
             case R.id.action_developer:
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(
-                        "https://github.com/Nightonke")));
+                        "https://huangweiping.me")));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

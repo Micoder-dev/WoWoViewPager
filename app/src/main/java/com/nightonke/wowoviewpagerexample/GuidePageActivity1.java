@@ -193,22 +193,22 @@ public class GuidePageActivity1 extends WoWoActivity {
         WoWoPathView pathView = (WoWoPathView) findViewById(R.id.path_view);
 
         // For different screen size, try to adjust the scale values to see the airplane.
-        float xScale = 1;
-        float yScale = 1;
+        float xScale = screenW / 720f;
+        float yScale = screenH / 1280f;
 
         pathView.newPath()
-                .pathMoveTo(xScale * screenW / 2, screenH + 100)
-                .pathCubicTo(xScale * 313, yScale * (screenH - 531),
-                        xScale * (-234), yScale * (screenH -644),
-                        xScale * 141, yScale * (screenH - 772))
-                .pathCubicTo(xScale * 266, yScale * (screenH - 817),
-                        xScale * 444, yScale * (screenH - 825),
-                        xScale * 596, yScale * (screenH - 788))
-                .pathCubicTo(xScale * 825, yScale * (screenH - 727),
-                        xScale * 755, yScale * (screenH - 592),
-                        -100, yScale * (screenH - 609));
+                .pathMoveTo(screenW / 2, screenH + yScale * 100)
+                .pathCubicTo(xScale * 313, screenH - yScale * 531,
+                        xScale * (-234), screenH - yScale * 644,
+                        xScale * 141, screenH - yScale * 772)
+                .pathCubicTo(xScale * 266, screenH - yScale * 817,
+                        xScale * 444, screenH - yScale * 825,
+                        xScale * 596, screenH - yScale * 788)
+                .pathCubicTo(xScale * 825, screenH - yScale * 727,
+                        xScale * 755, screenH - yScale * 592,
+                        xScale * (-100), screenH - yScale * 609);
         wowo.addAnimation(pathView)
-                .add(WoWoPathAnimation.builder().page(1).path(pathView).build())
+                .add(WoWoPathAnimation.builder().page(1).from(0).to(1).path(pathView).build())
                 .add(WoWoAlphaAnimation.builder().page(2).from(1).to(0).build());
     }
 

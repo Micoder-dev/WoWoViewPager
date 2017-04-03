@@ -8,10 +8,8 @@ import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.ListView;
 
-public class SetEaseTypeActivity extends AppCompatActivity
-        implements AdapterView.OnItemClickListener{
+public class SetEaseTypeActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
 
-    private ListView listView;
     private CheckBox checkBox;
 
     @Override
@@ -19,7 +17,7 @@ public class SetEaseTypeActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_ease_type);
 
-        listView = (ListView)findViewById(R.id.listview);
+        ListView listView = (ListView) findViewById(R.id.listview);
         listView.setAdapter(new SetEaseTypeAdapter(this));
         listView.setOnItemClickListener(this);
 
@@ -44,6 +42,9 @@ public class SetEaseTypeActivity extends AppCompatActivity
                 break;
             case "WoWoRotationAnimation":
                 intent = new Intent(this, WoWoRotationAnimationActivity.class);
+                break;
+            case "WoWoElevationAnimation":
+                intent = new Intent(this, WoWoElevationAnimationActivity.class);
                 break;
             case "WoWoTextViewTextSizeAnimation":
                 intent = new Intent(this, WoWoTextViewTextSizeAnimationActivity.class);

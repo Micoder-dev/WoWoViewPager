@@ -12,6 +12,7 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PathEffect;
 import android.graphics.PathMeasure;
+import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
@@ -147,15 +148,28 @@ public class WoWoPathView extends View implements WoWoAnimationInterface {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        canvas.save();
-        partialPath.reset();
-        pathMeasure.getSegment(0.0f, pathLength * progress, partialPath, true);
-        canvas.drawPath(partialPath, paint);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            // Help wanted.
+            // In android version lower than lollipop,
+            // we cannot draw the path by this way.
+            // And as a result, dash-line cannot be achieved.
+            canvas.save();
+            partialPath.reset();
+            pathMeasure.getSegment(0.0f, pathLength * progress, partialPath, true);
+            canvas.drawPath(partialPath, paint);
 
-        if (dynamicalPath) {
-            pathEffect = new DashPathEffect(new float[]{dashSegmentLength, dashPaddingLength}, dynamicalPathPhase);
-            dynamicalPathPhase += dynamicalPathSpeed;
+            if (dynamicalPath) {
+                pathEffect = new DashPathEffect(new float[]{dashSegmentLength, dashPaddingLength}, dynamicalPathPhase);
+                dynamicalPathPhase += dynamicalPathSpeed;
+                paint.setPathEffect(pathEffect);
+            }
+        } else {
+            PathEffect pathEffect = new DashPathEffect(new float[]{pathLength, pathLength}, (pathLength - pathLength * progress));
             paint.setPathEffect(pathEffect);
+
+            canvas.save();
+            canvas.translate(getPaddingLeft(), getPaddingTop());
+            canvas.drawPath(path, paint);
         }
 
         if (headImageRes != 0) {
@@ -169,7 +183,7 @@ public class WoWoPathView extends View implements WoWoAnimationInterface {
 
         canvas.restore();
 
-        if (dynamicalPath) invalidate();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && dynamicalPath) invalidate();
     }
 
     @Override
@@ -195,22 +209,25 @@ public class WoWoPathView extends View implements WoWoAnimationInterface {
         setMeasuredDimension(measuredWidth, measuredHeight);
     }
 
+    public void setProcess(float process) {
+        this.progress = process;
+        // Check method onDraw to find out why
+        if (!dynamicalPath || Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) invalidate();
+    }
+
     @Override
     public void toStartState() {
-        progress = 0;
-        if (!dynamicalPath) invalidate();
+        setProcess(0);
     }
 
     @Override
     public void toMiddleState(float offset) {
-        progress = offset;
-        if (!dynamicalPath) invalidate();
+        setProcess(offset);
     }
 
     @Override
     public void toEndState() {
-        progress = 1;
-        if (!dynamicalPath) invalidate();
+        setProcess(1);
     }
 
     /**

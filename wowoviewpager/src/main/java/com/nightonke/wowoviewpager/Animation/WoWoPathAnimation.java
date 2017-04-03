@@ -17,25 +17,29 @@ import com.nightonke.wowoviewpager.WoWoPathView;
 public class WoWoPathAnimation extends PageAnimation {
 
     private WoWoPathView pathView;
+    private float fromProcess = UNINITIALIZED_VALUE;
+    private float toProcess = UNINITIALIZED_VALUE;
 
-    public WoWoPathAnimation(int page, float startOffset, float endOffset, Ease ease, boolean useSameEaseEnumBack, WoWoPathView pathView) {
+    public WoWoPathAnimation(int page, float startOffset, float endOffset, Ease ease, boolean useSameEaseEnumBack, WoWoPathView pathView, float fromProcess, float toProcess) {
         super(page, startOffset, endOffset, ease, useSameEaseEnumBack);
         this.pathView = pathView;
+        this.fromProcess = fromProcess;
+        this.toProcess = toProcess;
     }
 
     @Override
     protected void toStartState(View view) {
-        pathView.toStartState();
+        pathView.setProcess(fromProcess);
     }
 
     @Override
     protected void toMiddleState(View view, float offset) {
-        pathView.toMiddleState(offset);
+        pathView.setProcess(fromProcess + (toProcess - fromProcess) * offset);
     }
 
     @Override
     protected void toEndState(View view) {
-        pathView.toEndState();
+        pathView.setProcess(toProcess);
     }
 
     public static Builder builder() {
@@ -44,7 +48,17 @@ public class WoWoPathAnimation extends PageAnimation {
 
     public static class Builder extends PageAnimation.Builder<WoWoPathAnimation.Builder> {
 
+        private float fromProcess = UNINITIALIZED_VALUE;
+        private float toProcess = UNINITIALIZED_VALUE;
         private WoWoPathView pathView = null;
+
+        public Builder from(float fromProcess) { this.fromProcess = fromProcess; return this; }
+
+        public Builder from(double fromProcess) { return from((float) fromProcess); }
+
+        public Builder to(float toProcess) { this.toProcess = toProcess; return this; }
+
+        public Builder to(double toProcess) { return to((float) toProcess); }
 
         public Builder path(WoWoPathView pathView) {
             this.pathView = pathView;
@@ -53,12 +67,14 @@ public class WoWoPathAnimation extends PageAnimation {
 
         public WoWoPathAnimation build() {
             checkUninitializedAttributes();
-            return new WoWoPathAnimation(page, startOffset, endOffset, ease, useSameEaseEnumBack, pathView);
+            return new WoWoPathAnimation(page, startOffset, endOffset, ease, useSameEaseEnumBack, pathView, fromProcess, toProcess);
         }
 
         @Override
         protected void checkUninitializedAttributes() {
             if (pathView == null) uninitializedAttributeException("pathView");
+            if (fromProcess == UNINITIALIZED_VALUE) uninitializedAttributeException("fromProcess");
+            if (toProcess == UNINITIALIZED_VALUE) uninitializedAttributeException("toProcess");
         }
     }
 }

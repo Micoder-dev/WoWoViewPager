@@ -61,6 +61,13 @@
             android:text="@string/wowo_rotation_animation"
             />
 
+        <Button
+            android:id="@+id/wowo_elevation_animation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/wowo_elevation_animation"
+            />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -224,13 +231,6 @@
             android:textColor="@color/black"
             android:textSize="18sp"
             android:gravity="center_vertical"
-            />
-
-        <Button
-            android:id="@+id/cv_example"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/cv_example"
             />
 
         <Button

@@ -1517,7 +1517,7 @@ public class BaseViewPager extends ViewGroup {
             // Base offsets off of oldCurInfo.
             if (oldCurPosition < curItem.position) {
                 int itemIndex = 0;
-                ItemInfo ii = null;
+                ItemInfo ii;
                 float offset = oldCurInfo.offset + oldCurInfo.heightFactor + marginOffset;
                 for (int pos = oldCurPosition + 1;
                      pos <= curItem.position && itemIndex < mItems.size(); pos++) {
@@ -1537,7 +1537,7 @@ public class BaseViewPager extends ViewGroup {
                 }
             } else if (oldCurPosition > curItem.position) {
                 int itemIndex = mItems.size() - 1;
-                ItemInfo ii = null;
+                ItemInfo ii;
                 float offset = oldCurInfo.offset;
                 for (int pos = oldCurPosition - 1;
                      pos >= curItem.position && itemIndex >= 0; pos--) {
