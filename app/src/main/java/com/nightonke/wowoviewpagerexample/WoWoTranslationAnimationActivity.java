@@ -1,14 +1,15 @@
 package com.nightonke.wowoviewpagerexample;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 
-import com.nightonke.wowoviewpager.Enum.Ease;
 import com.nightonke.wowoviewpager.Animation.ViewAnimation;
 import com.nightonke.wowoviewpager.Animation.WoWoTranslationAnimation;
+import com.nightonke.wowoviewpager.Enum.Ease;
 
 public class WoWoTranslationAnimationActivity extends WoWoActivity {
+
+    private boolean animationAdded = false;
 
     @Override
     protected int contentViewRes() {
@@ -18,16 +19,17 @@ public class WoWoTranslationAnimationActivity extends WoWoActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                addAnimations();
-            }
-        }, 100);
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        addAnimations();
     }
 
     private void addAnimations() {
+        if (animationAdded) return;
+        animationAdded = true;
 
         // For translation-animation,
         // do the add-animations job in methods when the views in activity finishing "onLayout".
