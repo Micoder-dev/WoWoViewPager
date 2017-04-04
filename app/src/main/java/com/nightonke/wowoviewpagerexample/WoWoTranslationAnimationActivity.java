@@ -37,33 +37,33 @@ public class WoWoTranslationAnimationActivity extends WoWoActivity {
         View view = findViewById(R.id.test);
         float radius = view.getWidth() / 2;
 
-        ViewAnimation animation = new ViewAnimation(view);
-        animation.add(WoWoTranslationAnimation.builder().page(0).start(0).end(1)
+        ViewAnimation viewAnimation = new ViewAnimation(view);
+        viewAnimation.add(WoWoTranslationAnimation.builder().page(0).start(0).end(1)
                 .fromX(view.getTranslationX()).toX(-screenW / 2 + radius)
                 .fromY(view.getTranslationY()).toY(-screenH / 2 + radius)
                 .ease(ease).build());
-        animation.add(WoWoTranslationAnimation.builder().page(1).start(0).end(1)
+        viewAnimation.add(WoWoTranslationAnimation.builder().page(1).start(0).end(1)
                 .fromX(-screenW / 2 + radius).toX(screenW / 2 - radius)
                 .fromY(-screenH / 2 + radius).toY(screenH / 2 - radius)
                 .ease(ease).build());
-        animation.add(WoWoTranslationAnimation.builder().page(2).start(0).end(0.5)
+        viewAnimation.add(WoWoTranslationAnimation.builder().page(2).start(0).end(0.5)
                 .keepX(screenW / 2 - radius)
                 .fromY(screenH / 2 - radius).toY(0)
                 .ease(Ease.Linear).build());
-        animation.add(WoWoTranslationAnimation.builder().page(2).start(0.5).end(1)
+        viewAnimation.add(WoWoTranslationAnimation.builder().page(2).start(0.5).end(1)
                 .fromX(screenW / 2 - radius).toX(-screenW / 2 + radius)
                 .keepY(0)
                 .ease(ease).build());
-        animation.add(WoWoTranslationAnimation.builder().page(3).start(0).end(0.5)
+        viewAnimation.add(WoWoTranslationAnimation.builder().page(3).start(0).end(0.5)
                 .fromX(-screenW / 2 + radius).toX(0)
                 .fromY(0).toY(-screenH / 2 + radius)
                 .ease(Ease.Linear).build());
-        animation.add(WoWoTranslationAnimation.builder().page(3).start(0.5).end(1)
+        viewAnimation.add(WoWoTranslationAnimation.builder().page(3).start(0.5).end(1)
                 .keepX(0)
                 .fromY(-screenH / 2 + radius).toY(0)
                 .ease(ease).build());
 
-        wowo.addAnimation(animation);
+        wowo.addAnimation(viewAnimation);
         wowo.setUseSameEaseBack(useSameEaseTypeBack);
         wowo.ready();
     }
