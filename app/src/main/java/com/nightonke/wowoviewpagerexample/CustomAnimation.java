@@ -1,5 +1,6 @@
 package com.nightonke.wowoviewpagerexample;
 
+import android.animation.TimeInterpolator;
 import android.os.Build;
 import android.view.View;
 
@@ -19,8 +20,8 @@ public class CustomAnimation extends PageAnimation {
     private float fromElevation;
     private float toElevation;
 
-    public CustomAnimation(int page, float startOffset, float endOffset, Ease ease, boolean useSameEaseEnumBack, float fromElevation, float toElevation) {
-        super(page, startOffset, endOffset, ease, useSameEaseEnumBack);
+    private CustomAnimation(int page, float startOffset, float endOffset, Ease ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, float fromElevation, float toElevation) {
+        super(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack);
         this.fromElevation = fromElevation;
         this.toElevation = toElevation;
     }
@@ -65,7 +66,7 @@ public class CustomAnimation extends PageAnimation {
 
         public CustomAnimation build() {
             checkUninitializedAttributes();
-            return new CustomAnimation(page, startOffset, endOffset, ease, useSameEaseEnumBack, fromElevation, toElevation);
+            return new CustomAnimation(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack, fromElevation, toElevation);
         }
 
         @Override

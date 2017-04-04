@@ -1,5 +1,6 @@
 package com.nightonke.wowoviewpager.Animation;
 
+import android.animation.TimeInterpolator;
 import android.view.View;
 
 import com.nightonke.wowoviewpager.Enum.Ease;
@@ -15,8 +16,8 @@ import com.nightonke.wowoviewpager.Enum.Ease;
 
 public class WoWoScaleAnimation extends XYPageAnimation {
 
-    public WoWoScaleAnimation(int page, float startOffset, float endOffset, Ease ease, boolean useSameEaseEnumBack, float fromX, float fromY, float toX, float toY) {
-        super(page, startOffset, endOffset, ease, useSameEaseEnumBack, fromX, fromY, toX, toY);
+    private WoWoScaleAnimation(int page, float startOffset, float endOffset, Ease ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, float fromX, float fromY, float toX, float toY) {
+        super(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack, fromX, fromY, toX, toY);
     }
 
     @Override
@@ -45,7 +46,7 @@ public class WoWoScaleAnimation extends XYPageAnimation {
 
         public WoWoScaleAnimation build() {
             checkUninitializedAttributes();
-            return new WoWoScaleAnimation(page, startOffset, endOffset, ease, useSameEaseEnumBack, fromX, fromY, toX, toY);
+            return new WoWoScaleAnimation(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack, fromX, fromY, toX, toY);
         }
     }
 }

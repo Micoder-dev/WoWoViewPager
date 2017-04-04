@@ -1,5 +1,6 @@
 package com.nightonke.wowoviewpager.Animation;
 
+import android.animation.TimeInterpolator;
 import android.view.View;
 
 import com.nightonke.wowoviewpager.Enum.Ease;
@@ -9,22 +10,16 @@ import com.nightonke.wowoviewpager.Enum.Ease;
  * For Personal Open Source
  * Contact me at 2584541288@qq.com or nightonke@outlook.com
  * For more projects: https://github.com/Nightonke
+ *
+ * Animation to change the process of a {@link WoWoAnimationInterface}.
  */
 
 public class WoWoInterfaceAnimation extends PageAnimation {
 
     private WoWoAnimationInterface animationInterface;
 
-    public WoWoInterfaceAnimation(int page, float startOffset, float endOffset, Ease ease, boolean useSameEaseEnumBack, WoWoAnimationInterface animationInterface) {
-        super(page, startOffset, endOffset, ease, useSameEaseEnumBack);
-        this.animationInterface = animationInterface;
-    }
-
-    public WoWoAnimationInterface getAnimationInterface() {
-        return animationInterface;
-    }
-
-    public void setAnimationInterface(WoWoAnimationInterface animationInterface) {
+    private WoWoInterfaceAnimation(int page, float startOffset, float endOffset, Ease ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, WoWoAnimationInterface animationInterface) {
+        super(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack);
         this.animationInterface = animationInterface;
     }
 
@@ -58,7 +53,7 @@ public class WoWoInterfaceAnimation extends PageAnimation {
 
         public WoWoInterfaceAnimation build() {
             checkUninitializedAttributes();
-            return new WoWoInterfaceAnimation(page, startOffset, endOffset, ease, useSameEaseEnumBack, animationInterface);
+            return new WoWoInterfaceAnimation(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack, animationInterface);
         }
 
         @Override

@@ -1,5 +1,6 @@
 package com.nightonke.wowoviewpager.Animation;
 
+import android.animation.TimeInterpolator;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -22,8 +23,8 @@ public class WoWoTextViewTextAnimation extends PageAnimation {
     private String toText = null;
     private Typewriter typewriter = Typewriter.DeleteThenType;
 
-    public WoWoTextViewTextAnimation(int page, float startOffset, float endOffset, Ease ease, boolean useSameEaseEnumBack, String fromText, String toText, Typewriter typewriter) {
-        super(page, startOffset, endOffset, ease, useSameEaseEnumBack);
+    private WoWoTextViewTextAnimation(int page, float startOffset, float endOffset, Ease ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, String fromText, String toText, Typewriter typewriter) {
+        super(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack);
         this.fromText = fromText;
         this.toText = toText;
         this.typewriter = typewriter;
@@ -71,7 +72,7 @@ public class WoWoTextViewTextAnimation extends PageAnimation {
 
         public WoWoTextViewTextAnimation build() {
             checkUninitializedAttributes();
-            return new WoWoTextViewTextAnimation(page, startOffset, endOffset, ease, useSameEaseEnumBack, fromText, toText, typewriter);
+            return new WoWoTextViewTextAnimation(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack, fromText, toText, typewriter);
         }
 
         @Override

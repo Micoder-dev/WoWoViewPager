@@ -1,5 +1,6 @@
 package com.nightonke.wowoviewpager.Animation;
 
+import android.animation.TimeInterpolator;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.util.Log;
@@ -21,8 +22,8 @@ import static com.nightonke.wowoviewpager.WoWoViewPager.TAG;
 
 public class WoWoShapeColorAnimation extends SingleColorPageAnimation {
 
-    public WoWoShapeColorAnimation(int page, float startOffset, float endOffset, Ease ease, boolean useSameEaseEnumBack, Integer fromColor, Integer toColor, Chameleon chameleon) {
-        super(page, startOffset, endOffset, ease, useSameEaseEnumBack, fromColor, toColor, chameleon);
+    private WoWoShapeColorAnimation(int page, float startOffset, float endOffset, Ease ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, Integer fromColor, Integer toColor, Chameleon chameleon) {
+        super(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack, fromColor, toColor, chameleon);
     }
 
     @Override
@@ -54,7 +55,7 @@ public class WoWoShapeColorAnimation extends SingleColorPageAnimation {
 
         public WoWoShapeColorAnimation build() {
             checkUninitializedAttributes();
-            return new WoWoShapeColorAnimation(page, startOffset, endOffset, ease, useSameEaseEnumBack, fromColor, toColor, chameleon);
+            return new WoWoShapeColorAnimation(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack, fromColor, toColor, chameleon);
         }
     }
 }

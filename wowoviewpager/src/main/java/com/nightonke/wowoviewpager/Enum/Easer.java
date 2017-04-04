@@ -117,9 +117,6 @@ public class Easer implements TimeInterpolator {
             case Linear:
                 init(0, 0, 1, 1);
                 break;
-            case Custom:
-                init(ease.getStartX(), ease.getStartY(), ease.getEndX(), ease.getEndY());
-                break;
             case InBounce:
             case OutBounce:
             case InOutBounce:

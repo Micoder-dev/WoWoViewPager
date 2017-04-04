@@ -1,5 +1,6 @@
 package com.nightonke.wowoviewpager.Animation;
 
+import android.animation.TimeInterpolator;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -26,14 +27,15 @@ public class WoWoTextViewColorAnimation extends SingleColorPageAnimation {
      * @param page                The animation will be played when the (page + 1) page is starting to show.
      * @param startOffset         The animation only plays when the offset of page is large than startOffset.
      * @param endOffset           The animation only plays when the offset of page is less than endOffset.
-     * @param ease            The ease type of the animation.
+     * @param ease                The ease type of the animation.
+     * @param interpolator        Custom time interpolator.
      * @param useSameEaseEnumBack Whether use the same ease type of animation when swiping back the view-pager.
      * @param fromColor           The starting-color.
      * @param toColor             The ending-color.
      * @param chameleon           The color-changing-type. Check {@link Chameleon}
      */
-    public WoWoTextViewColorAnimation(int page, float startOffset, float endOffset, Ease ease, boolean useSameEaseEnumBack, Integer fromColor, Integer toColor, Chameleon chameleon) {
-        super(page, startOffset, endOffset, ease, useSameEaseEnumBack, fromColor, toColor, chameleon);
+    private WoWoTextViewColorAnimation(int page, float startOffset, float endOffset, Ease ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, Integer fromColor, Integer toColor, Chameleon chameleon) {
+        super(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack, fromColor, toColor, chameleon);
     }
 
     @Override
@@ -68,7 +70,7 @@ public class WoWoTextViewColorAnimation extends SingleColorPageAnimation {
 
         public WoWoTextViewColorAnimation build() {
             checkUninitializedAttributes();
-            return new WoWoTextViewColorAnimation(page, startOffset, endOffset, ease, useSameEaseEnumBack, fromColor, toColor, chameleon);
+            return new WoWoTextViewColorAnimation(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack, fromColor, toColor, chameleon);
         }
     }
 }

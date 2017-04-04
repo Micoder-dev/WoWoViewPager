@@ -1,5 +1,6 @@
 package com.nightonke.wowoviewpager;
 
+import android.animation.TimeInterpolator;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -11,6 +12,7 @@ import android.view.View;
 
 import com.nightonke.wowoviewpager.Animation.ViewAnimation;
 import com.nightonke.wowoviewpager.Enum.Ease;
+import com.nightonke.wowoviewpager.Enum.Easer;
 import com.nightonke.wowoviewpager.Enum.Gearbox;
 
 import java.util.ArrayList;
@@ -384,9 +386,16 @@ public class WoWoViewPager extends BaseViewPager {
      *
      * @param ease Ease enum
      */
-    public void setEase(Ease ease) {
+    public void setEase(Ease ease) { setTimeInterpolator(Easer.getInstance(ease)); }
+
+    /**
+     * Set TimeInterpolator for all page animations in all view animations.
+     *
+     * @param interpolator TimeInterpolator
+     */
+    public void setTimeInterpolator(TimeInterpolator interpolator) {
         if (viewAnimations == null) return;
-        for (ViewAnimation viewAnimation : viewAnimations) viewAnimation.setEase(ease);
+        for (ViewAnimation viewAnimation : viewAnimations) viewAnimation.setTimeInterpolator(interpolator);
     }
 
     /**
@@ -395,9 +404,17 @@ public class WoWoViewPager extends BaseViewPager {
      * @param ease Ease enum
      * @param page Certain page
      */
-    public void setEase(Ease ease, int page) {
+    public void setEase(Ease ease, int page) { setTimeInterpolator(Easer.getInstance(ease), page); }
+
+    /**
+     * Set TimeInterpolator for all page animations at a certain page in all view animations.
+     *
+     * @param interpolator TimeInterpolator
+     * @param page Certain page
+     */
+    public void setTimeInterpolator(TimeInterpolator interpolator, int page) {
         if (viewAnimations == null) return;
-        for (ViewAnimation viewAnimation : viewAnimations) viewAnimation.setEase(ease, page);
+        for (ViewAnimation viewAnimation : viewAnimations) viewAnimation.setTimeInterpolator(interpolator, page);
     }
 
     /**

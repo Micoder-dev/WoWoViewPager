@@ -1,5 +1,7 @@
 package com.nightonke.wowoviewpager.Animation;
 
+import android.animation.TimeInterpolator;
+
 import com.nightonke.wowoviewpager.Enum.Ease;
 
 /**
@@ -27,14 +29,15 @@ public abstract class XYPageAnimation extends PageAnimation {
      * @param startOffset The animation only plays when the offset of page is large than startOffset.
      * @param endOffset The animation only plays when the offset of page is less than endOffset.
      * @param ease The ease type of the animation.
+     * @param interpolator Custom time interpolator.
      * @param useSameEaseEnumBack Whether use the same ease type of animation when swiping back the view-pager.
      * @param fromX From x value.
      * @param fromY From y value.
      * @param toX To x value.
      * @param toY To y value.
      */
-    public XYPageAnimation(int page, float startOffset, float endOffset, Ease ease, boolean useSameEaseEnumBack, float fromX, float fromY, float toX, float toY) {
-        super(page, startOffset, endOffset, ease, useSameEaseEnumBack);
+    public XYPageAnimation(int page, float startOffset, float endOffset, Ease ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, float fromX, float fromY, float toX, float toY) {
+        super(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack);
         this.fromX = fromX;
         this.fromY = fromY;
         this.toX = toX;

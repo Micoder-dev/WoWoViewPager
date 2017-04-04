@@ -1,5 +1,6 @@
 package com.nightonke.wowoviewpager.Animation;
 
+import android.animation.TimeInterpolator;
 import android.os.Build;
 import android.view.View;
 
@@ -20,8 +21,8 @@ public class WoWoElevationAnimation extends PageAnimation {
     private float fromElevation;
     private float toElevation;
 
-    public WoWoElevationAnimation(int page, float startOffset, float endOffset, Ease ease, boolean useSameEaseEnumBack, float fromElevation, float toElevation) {
-        super(page, startOffset, endOffset, ease, useSameEaseEnumBack);
+    private WoWoElevationAnimation(int page, float startOffset, float endOffset, Ease ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, float fromElevation, float toElevation) {
+        super(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack);
         this.fromElevation = fromElevation;
         this.toElevation = toElevation;
     }
@@ -66,7 +67,7 @@ public class WoWoElevationAnimation extends PageAnimation {
 
         public WoWoElevationAnimation build() {
             checkUninitializedAttributes();
-            return new WoWoElevationAnimation(page, startOffset, endOffset, ease, useSameEaseEnumBack, fromElevation, toElevation);
+            return new WoWoElevationAnimation(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack, fromElevation, toElevation);
         }
 
         @Override

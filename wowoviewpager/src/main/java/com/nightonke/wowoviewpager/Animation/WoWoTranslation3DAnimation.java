@@ -1,5 +1,6 @@
 package com.nightonke.wowoviewpager.Animation;
 
+import android.animation.TimeInterpolator;
 import android.os.Build;
 import android.view.View;
 
@@ -16,8 +17,8 @@ import com.nightonke.wowoviewpager.Enum.Ease;
 
 public class WoWoTranslation3DAnimation extends XYZPageAnimation {
 
-    public WoWoTranslation3DAnimation(int page, float startOffset, float endOffset, Ease ease, boolean useSameEaseEnumBack, float fromX, float fromY, float fromZ, float toX, float toY, float toZ) {
-        super(page, startOffset, endOffset, ease, useSameEaseEnumBack, fromX, fromY, fromZ, toX, toY, toZ);
+    private WoWoTranslation3DAnimation(int page, float startOffset, float endOffset, Ease ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, float fromX, float fromY, float fromZ, float toX, float toY, float toZ) {
+        super(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack, fromX, fromY, fromZ, toX, toY, toZ);
     }
 
     @Override
@@ -49,7 +50,7 @@ public class WoWoTranslation3DAnimation extends XYZPageAnimation {
 
         public WoWoTranslation3DAnimation build() {
             checkUninitializedAttributes();
-            return new WoWoTranslation3DAnimation(page, startOffset, endOffset, ease, useSameEaseEnumBack, fromX, fromY, fromZ, toX, toY, toZ);
+            return new WoWoTranslation3DAnimation(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack, fromX, fromY, fromZ, toX, toY, toZ);
         }
     }
 }

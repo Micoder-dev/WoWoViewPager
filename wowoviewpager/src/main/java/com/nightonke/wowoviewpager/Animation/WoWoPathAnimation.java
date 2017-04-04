@@ -1,5 +1,6 @@
 package com.nightonke.wowoviewpager.Animation;
 
+import android.animation.TimeInterpolator;
 import android.view.View;
 
 import com.nightonke.wowoviewpager.Enum.Ease;
@@ -20,8 +21,8 @@ public class WoWoPathAnimation extends PageAnimation {
     private float fromProcess = UNINITIALIZED_VALUE;
     private float toProcess = UNINITIALIZED_VALUE;
 
-    public WoWoPathAnimation(int page, float startOffset, float endOffset, Ease ease, boolean useSameEaseEnumBack, WoWoPathView pathView, float fromProcess, float toProcess) {
-        super(page, startOffset, endOffset, ease, useSameEaseEnumBack);
+    private WoWoPathAnimation(int page, float startOffset, float endOffset, Ease ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, WoWoPathView pathView, float fromProcess, float toProcess) {
+        super(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack);
         this.pathView = pathView;
         this.fromProcess = fromProcess;
         this.toProcess = toProcess;
@@ -67,7 +68,7 @@ public class WoWoPathAnimation extends PageAnimation {
 
         public WoWoPathAnimation build() {
             checkUninitializedAttributes();
-            return new WoWoPathAnimation(page, startOffset, endOffset, ease, useSameEaseEnumBack, pathView, fromProcess, toProcess);
+            return new WoWoPathAnimation(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack, pathView, fromProcess, toProcess);
         }
 
         @Override

@@ -1,5 +1,6 @@
 package com.nightonke.wowoviewpager.Animation;
 
+import android.animation.TimeInterpolator;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
@@ -24,14 +25,8 @@ public class WoWoTextViewTextSizeAnimation extends PageAnimation {
     private float toSize = UNINITIALIZED_VALUE;
     private int unit = TypedValue.COMPLEX_UNIT_SP;
 
-    public WoWoTextViewTextSizeAnimation(int page, float startOffset, float endOffset, Ease ease, boolean useSameEaseEnumBack, float fromSize, float toSize) {
-        super(page, startOffset, endOffset, ease, useSameEaseEnumBack);
-        this.fromSize = fromSize;
-        this.toSize = toSize;
-    }
-
-    public WoWoTextViewTextSizeAnimation(int page, float startOffset, float endOffset, Ease ease, boolean useSameEaseEnumBack, float fromSize, float toSize, int unit) {
-        super(page, startOffset, endOffset, ease, useSameEaseEnumBack);
+    private WoWoTextViewTextSizeAnimation(int page, float startOffset, float endOffset, Ease ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, float fromSize, float toSize, int unit) {
+        super(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack);
         this.fromSize = fromSize;
         this.toSize = toSize;
         this.unit = unit;
@@ -107,7 +102,7 @@ public class WoWoTextViewTextSizeAnimation extends PageAnimation {
 
         public WoWoTextViewTextSizeAnimation build() {
             checkUninitializedAttributes();
-            return new WoWoTextViewTextSizeAnimation(page, startOffset, endOffset, ease, useSameEaseEnumBack, fromSize, toSize, unit);
+            return new WoWoTextViewTextSizeAnimation(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack, fromSize, toSize, unit);
         }
 
         @Override

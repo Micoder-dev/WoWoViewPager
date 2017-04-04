@@ -1,5 +1,6 @@
 package com.nightonke.wowoviewpager.Animation;
 
+import android.animation.TimeInterpolator;
 import android.graphics.Color;
 
 import com.nightonke.wowoviewpager.Enum.Chameleon;
@@ -34,13 +35,14 @@ public abstract class SingleColorPageAnimation extends PageAnimation {
      * @param startOffset The animation only plays when the offset of page is large than startOffset.
      * @param endOffset The animation only plays when the offset of page is less than endOffset.
      * @param ease The ease type of the animation.
+     * @param interpolator Custom time interpolator.
      * @param useSameEaseEnumBack Whether use the same ease type of animation when swiping back the view-pager.
      * @param fromColor The starting-color.
      * @param toColor The ending-color.
      * @param chameleon The color-changing-type. Check {@link Chameleon}
      */
-    SingleColorPageAnimation(int page, float startOffset, float endOffset, Ease ease, boolean useSameEaseEnumBack, Integer fromColor, Integer toColor, Chameleon chameleon) {
-        super(page, startOffset, endOffset, ease, useSameEaseEnumBack);
+    public SingleColorPageAnimation(int page, float startOffset, float endOffset, Ease ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, Integer fromColor, Integer toColor, Chameleon chameleon) {
+        super(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack);
         this.fromColor = fromColor;
         this.toColor = toColor;
         this.chameleon = chameleon;

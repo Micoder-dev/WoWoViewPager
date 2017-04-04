@@ -1,5 +1,6 @@
 package com.nightonke.wowoviewpager.Animation;
 
+import android.animation.TimeInterpolator;
 import android.view.View;
 
 import com.nightonke.wowoviewpager.Enum.Ease;
@@ -24,12 +25,13 @@ public class WoWoAlphaAnimation extends PageAnimation {
      * @param startOffset The animation only plays when the offset of page is large than startOffset.
      * @param endOffset The animation only plays when the offset of page is less than endOffset.
      * @param ease The ease type of the animation.
+     * @param interpolator Custom time interpolator.
      * @param useSameEaseEnumBack Whether use the same ease type of animation when swiping back the view-pager.
      * @param fromAlpha The start-opacity.
      * @param toAlpha The end-opacity.
      */
-    public WoWoAlphaAnimation(int page, float startOffset, float endOffset, Ease ease, boolean useSameEaseEnumBack, float fromAlpha, float toAlpha) {
-        super(page, startOffset, endOffset, ease, useSameEaseEnumBack);
+    private WoWoAlphaAnimation(int page, float startOffset, float endOffset, Ease ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, float fromAlpha, float toAlpha) {
+        super(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack);
         this.fromAlpha = fromAlpha;
         this.toAlpha = toAlpha;
     }
@@ -70,7 +72,7 @@ public class WoWoAlphaAnimation extends PageAnimation {
 
         public WoWoAlphaAnimation build() {
             checkUninitializedAttributes();
-            return new WoWoAlphaAnimation(page, startOffset, endOffset, ease, useSameEaseEnumBack, fromAlpha, toAlpha);
+            return new WoWoAlphaAnimation(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack, fromAlpha, toAlpha);
         }
 
         @Override

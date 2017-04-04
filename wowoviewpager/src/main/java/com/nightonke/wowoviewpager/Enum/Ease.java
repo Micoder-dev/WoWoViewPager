@@ -50,7 +50,6 @@ public enum Ease {
     InOutBounce(29),
 
     Linear(30),
-    Custom(31),
     Unknown(-1);
 
     private int value = 30;
@@ -59,23 +58,6 @@ public enum Ease {
 
     Ease(int value) {
         this.value = value;
-    }
-
-    /**
-     * Use this method to create a custom bezier-cubic.
-     * Check http://cubic-bezier.com/
-     *
-     * @param startX Control-Point1-X
-     * @param startY Control-Point1-Y
-     * @param endX   Control-Point2-X
-     * @param endY   Control-Point2-Y
-     */
-    Ease(float startX, float startY, float endX, float endY) {
-        this.value = 31;
-        this.startX = startX;
-        this.startY = startY;
-        this.endX = endX;
-        this.endY = endY;
     }
 
     public int getValue() {

@@ -1,5 +1,6 @@
 package com.nightonke.wowoviewpager.Animation;
 
+import android.animation.TimeInterpolator;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
@@ -28,14 +29,15 @@ public class WoWoLayerListColorAnimation extends MultiColorPageAnimation {
      * @param page                The animation will be played when the (page + 1) page is starting to show.
      * @param startOffset         The animation only plays when the offset of page is large than startOffset.
      * @param endOffset           The animation only plays when the offset of page is less than endOffset.
-     * @param ease            The ease type of the animation.
+     * @param ease                The ease type of the animation.
+     * @param interpolator        Custom time interpolator.
      * @param useSameEaseEnumBack Whether use the same ease type of animation when swiping back the view-pager.
      * @param fromColors          The starting-colors.
      * @param toColors            The ending-colors.
      * @param chameleon           The color-changing-type. Check {@link Chameleon}
      */
-    public WoWoLayerListColorAnimation(int page, float startOffset, float endOffset, Ease ease, boolean useSameEaseEnumBack, int[] fromColors, int[] toColors, Chameleon chameleon) {
-        super(page, startOffset, endOffset, ease, useSameEaseEnumBack, fromColors, toColors, chameleon);
+    private WoWoLayerListColorAnimation(int page, float startOffset, float endOffset, Ease ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, int[] fromColors, int[] toColors, Chameleon chameleon) {
+        super(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack, fromColors, toColors, chameleon);
     }
 
     @Override
@@ -69,7 +71,7 @@ public class WoWoLayerListColorAnimation extends MultiColorPageAnimation {
 
         public WoWoLayerListColorAnimation build() {
             checkUninitializedAttributes();
-            return new WoWoLayerListColorAnimation(page, startOffset, endOffset, ease, useSameEaseEnumBack, fromColors, toColors, chameleon);
+            return new WoWoLayerListColorAnimation(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack, fromColors, toColors, chameleon);
         }
     }
 }

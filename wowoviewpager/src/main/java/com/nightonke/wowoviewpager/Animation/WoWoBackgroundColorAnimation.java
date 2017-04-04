@@ -1,5 +1,6 @@
 package com.nightonke.wowoviewpager.Animation;
 
+import android.animation.TimeInterpolator;
 import android.view.View;
 
 import com.nightonke.wowoviewpager.Enum.Chameleon;
@@ -22,14 +23,15 @@ public class WoWoBackgroundColorAnimation extends SingleColorPageAnimation {
      * @param page                The animation will be played when the (page + 1) page is starting to show.
      * @param startOffset         The animation only plays when the offset of page is large than startOffset.
      * @param endOffset           The animation only plays when the offset of page is less than endOffset.
-     * @param ease            The ease type of the animation.
+     * @param ease                The ease type of the animation.
+     * @param interpolator        Custom time interpolator.
      * @param useSameEaseEnumBack Whether use the same ease type of animation when swiping back the view-pager.
      * @param fromColor           The starting-color.
      * @param toColor             The ending-color.
      * @param chameleon           The color-changing-type. Check {@link Chameleon}
      */
-    public WoWoBackgroundColorAnimation(int page, float startOffset, float endOffset, Ease ease, boolean useSameEaseEnumBack, Integer fromColor, Integer toColor, Chameleon chameleon) {
-        super(page, startOffset, endOffset, ease, useSameEaseEnumBack, fromColor, toColor, chameleon);
+    private WoWoBackgroundColorAnimation(int page, float startOffset, float endOffset, Ease ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, Integer fromColor, Integer toColor, Chameleon chameleon) {
+        super(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack, fromColor, toColor, chameleon);
     }
 
     @Override
@@ -55,7 +57,7 @@ public class WoWoBackgroundColorAnimation extends SingleColorPageAnimation {
 
         public WoWoBackgroundColorAnimation build() {
             checkUninitializedAttributes();
-            return new WoWoBackgroundColorAnimation(page, startOffset, endOffset, ease, useSameEaseEnumBack, fromColor, toColor, chameleon);
+            return new WoWoBackgroundColorAnimation(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack, fromColor, toColor, chameleon);
         }
     }
 }

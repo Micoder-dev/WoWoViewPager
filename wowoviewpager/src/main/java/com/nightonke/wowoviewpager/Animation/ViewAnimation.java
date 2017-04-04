@@ -1,8 +1,10 @@
 package com.nightonke.wowoviewpager.Animation;
 
+import android.animation.TimeInterpolator;
 import android.view.View;
 
 import com.nightonke.wowoviewpager.Enum.Ease;
+import com.nightonke.wowoviewpager.Enum.Easer;
 
 import java.util.ArrayList;
 
@@ -109,11 +111,18 @@ public class ViewAnimation {
      *
      * @param ease Ease enum
      */
-    public void setEase(Ease ease) {
+    public void setEase(Ease ease) { setTimeInterpolator(Easer.getInstance(ease)); }
+
+    /**
+     * Set TimeInterpolator for all page animations.
+     *
+     * @param interpolator TimeInterpolator
+     */
+    public void setTimeInterpolator(TimeInterpolator interpolator) {
         if (pageAnimations == null) return;
         for (ArrayList<PageAnimation> pageAnimationsInSamePage : pageAnimations) {
             if (pageAnimationsInSamePage == null) continue;
-            for (PageAnimation pageAnimation : pageAnimationsInSamePage) pageAnimation.setEaseEnum(ease);
+            for (PageAnimation pageAnimation : pageAnimationsInSamePage) pageAnimation.setTimeInterpolator(interpolator);
         }
     }
 
@@ -123,11 +132,19 @@ public class ViewAnimation {
      * @param ease Ease enum
      * @param page Certain page
      */
-    public void setEase(Ease ease, int page) {
+    public void setEase(Ease ease, int page) { setTimeInterpolator(Easer.getInstance(ease), page); }
+
+    /**
+     * Set TimeInterpolator for all page animations at a certain page.
+     *
+     * @param interpolator TimeInterpolator
+     * @param page Certain page
+     */
+    public void setTimeInterpolator(TimeInterpolator interpolator, int page) {
         if (pageAnimations == null || page >= pageAnimations.size() || page < 0) return;
         ArrayList<PageAnimation> pageAnimationsInSamePage = pageAnimations.get(page);
         if (pageAnimationsInSamePage == null) return;
-        for (PageAnimation pageAnimation : pageAnimationsInSamePage) pageAnimation.setEaseEnum(ease);
+        for (PageAnimation pageAnimation : pageAnimationsInSamePage) pageAnimation.setTimeInterpolator(interpolator);
     }
 
     /**
