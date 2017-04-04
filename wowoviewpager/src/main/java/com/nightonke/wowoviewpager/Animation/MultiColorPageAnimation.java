@@ -14,14 +14,15 @@ import java.util.List;
  * For more projects: https://github.com/Nightonke
  *
  * Use as an abstract class of multi-color transformation animations.
+ * This methods are able to override outside package.
  * Check {@link WoWoLayerListColorAnimation} and {@link WoWoStateListColorAnimation} as examples.
  */
 
 public abstract class MultiColorPageAnimation extends PageAnimation {
 
-    int[] fromColors = null;
-    int[] toColors = null;
-    Chameleon chameleon = Chameleon.RGB;
+    protected int[] fromColors = null;
+    protected int[] toColors = null;
+    protected Chameleon chameleon = Chameleon.RGB;
 
     private int[][] fromARGBArrays = null;
     private int[][] toARGBArrays = null;

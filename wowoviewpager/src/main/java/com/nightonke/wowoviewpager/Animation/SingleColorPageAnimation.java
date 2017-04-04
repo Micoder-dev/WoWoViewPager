@@ -12,14 +12,15 @@ import com.nightonke.wowoviewpager.Enum.Ease;
  * For more projects: https://github.com/Nightonke
  *
  * Use as an abstract class of single-color transformation animations.
+ * This methods are able to override outside package.
  * Check {@link WoWoBackgroundColorAnimation} and {@link WoWoShapeColorAnimation} as examples.
  */
 
 public abstract class SingleColorPageAnimation extends PageAnimation {
 
-    Integer fromColor = null;
-    Integer toColor = null;
-    Chameleon chameleon = Chameleon.RGB;
+    protected Integer fromColor = null;
+    protected Integer toColor = null;
+    protected Chameleon chameleon = Chameleon.RGB;
 
     private int[] fromARGBArray = null;
     private int[] toARGBArray = null;
@@ -94,5 +95,4 @@ public abstract class SingleColorPageAnimation extends PageAnimation {
             if (toColor == null) uninitializedAttributeException("toColor");
         }
     }
-
 }

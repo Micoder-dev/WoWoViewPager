@@ -11,7 +11,8 @@ import com.nightonke.wowoviewpager.Enum.Easer;
  * Contact me at 2584541288@qq.com or nightonke@outlook.com
  * For more projects: https://github.com/Nightonke
  *
- * PageAnimation play a kind of animation for a view started from a page in viewpager
+ * PageAnimation play a kind of animation for a view started from a page in viewpager.
+ * This methods are able to override outside package.
  */
 
 public abstract class PageAnimation {
@@ -39,12 +40,12 @@ public abstract class PageAnimation {
     /**
      * The ease type of the animation.
      */
-    private Easer easer = Easer.getInstance(Ease.Linear);
+    protected Easer easer = Easer.getInstance(Ease.Linear);
 
     /**
      * Whether use the same ease type of animation when swiping back the view-pager.
      */
-    boolean useSameEaseEnumBack = true;
+    protected boolean useSameEaseEnumBack = true;
 
     /**
      * Offset relative to the animation last time.
