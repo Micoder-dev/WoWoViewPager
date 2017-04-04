@@ -12,6 +12,7 @@
         android:layout_height="match_parent"
         />
 
+    <!--The view that need to play a scale animation-->
     <View
         android:id="@+id/test"
         android:layout_width="80dp"

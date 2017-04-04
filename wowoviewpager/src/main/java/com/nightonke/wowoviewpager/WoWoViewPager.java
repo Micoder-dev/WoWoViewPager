@@ -401,7 +401,7 @@ public class WoWoViewPager extends BaseViewPager {
     }
 
     /**
-     * Use same ease enum when swiping the view-pager back for all page animations in all view animations.
+     * Whether use same ease enum when swiping the view-pager back for all page animations in all view animations.
      *
      * @param useSameEaseEnumBack Use same ease enum when swiping the view-pager back
      */
@@ -411,7 +411,7 @@ public class WoWoViewPager extends BaseViewPager {
     }
 
     /**
-     * Use same ease enum when swiping the view-pager back at a certain page in all view animations.
+     * Whether use same ease enum when swiping the view-pager back at a certain page in all view animations.
      *
      * @param useSameEaseEnumBack Use same ease enum when swiping the view-pager back
      * @param page Certain page

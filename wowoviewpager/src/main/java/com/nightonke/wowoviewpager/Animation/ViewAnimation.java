@@ -131,7 +131,7 @@ public class ViewAnimation {
     }
 
     /**
-     * Use same ease enum when swiping the view-pager back for all page animations.
+     * Whether use same ease enum when swiping the view-pager back for all page animations.
      *
      * @param useSameEaseEnumBack Use same ease enum when swiping the view-pager back
      */
@@ -144,7 +144,7 @@ public class ViewAnimation {
     }
 
     /**
-     * Use same ease enum when swiping the view-pager back at a certain page.
+     * Whether use same ease enum when swiping the view-pager back at a certain page.
      *
      * @param useSameEaseEnumBack Use same ease enum when swiping the view-pager back
      * @param page Certain page

@@ -54,8 +54,8 @@ public abstract class WoWoActivity extends AppCompatActivity {
         wowo = (WoWoViewPager)findViewById(R.id.wowo_viewpager);
         wowo.setAdapter(WoWoViewPagerAdapter.builder()
                 .fragmentManager(getSupportFragmentManager())
-                .count(fragmentNumber())
-                .colorsRes(fragmentColorsRes())
+                .count(fragmentNumber())                       // Fragment Count
+                .colorsRes(fragmentColorsRes())                // Colors of fragments
                 .build());
         setPageTV(wowo);
 
