@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.nightonke.wowoviewpager.Enum.Chameleon;
-import com.nightonke.wowoviewpager.Enum.Ease;
 
 import static com.nightonke.wowoviewpager.WoWoViewPager.TAG;
 
@@ -34,7 +33,7 @@ public class WoWoTextViewColorAnimation extends SingleColorPageAnimation {
      * @param toColor             The ending-color.
      * @param chameleon           The color-changing-type. Check {@link Chameleon}
      */
-    private WoWoTextViewColorAnimation(int page, float startOffset, float endOffset, Ease ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, Integer fromColor, Integer toColor, Chameleon chameleon) {
+    private WoWoTextViewColorAnimation(int page, float startOffset, float endOffset, int ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, Integer fromColor, Integer toColor, Chameleon chameleon) {
         super(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack, fromColor, toColor, chameleon);
     }
 

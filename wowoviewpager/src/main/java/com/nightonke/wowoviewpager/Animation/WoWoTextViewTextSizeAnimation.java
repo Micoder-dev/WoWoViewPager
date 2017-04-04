@@ -6,8 +6,6 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.TextView;
 
-import com.nightonke.wowoviewpager.Enum.Ease;
-
 import static com.nightonke.wowoviewpager.WoWoViewPager.TAG;
 
 /**
@@ -25,7 +23,7 @@ public class WoWoTextViewTextSizeAnimation extends PageAnimation {
     private float toSize = UNINITIALIZED_VALUE;
     private int unit = TypedValue.COMPLEX_UNIT_SP;
 
-    private WoWoTextViewTextSizeAnimation(int page, float startOffset, float endOffset, Ease ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, float fromSize, float toSize, int unit) {
+    private WoWoTextViewTextSizeAnimation(int page, float startOffset, float endOffset, int ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, float fromSize, float toSize, int unit) {
         super(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack);
         this.fromSize = fromSize;
         this.toSize = toSize;

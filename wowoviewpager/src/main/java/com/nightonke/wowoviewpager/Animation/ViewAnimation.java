@@ -4,7 +4,6 @@ import android.animation.TimeInterpolator;
 import android.view.View;
 
 import com.nightonke.wowoviewpager.Enum.Ease;
-import com.nightonke.wowoviewpager.Enum.Easer;
 
 import java.util.ArrayList;
 
@@ -109,9 +108,9 @@ public class ViewAnimation {
     /**
      * Set ease type for all page animations.
      *
-     * @param ease Ease enum
+     * @param ease Ease
      */
-    public void setEase(Ease ease) { setTimeInterpolator(Easer.getInstance(ease)); }
+    public void setEase(int ease) { setTimeInterpolator(Ease.getInstance(ease)); }
 
     /**
      * Set TimeInterpolator for all page animations.
@@ -129,10 +128,10 @@ public class ViewAnimation {
     /**
      * Set ease type for all page animations at a certain page.
      *
-     * @param ease Ease enum
+     * @param ease Ease
      * @param page Certain page
      */
-    public void setEase(Ease ease, int page) { setTimeInterpolator(Easer.getInstance(ease), page); }
+    public void setEase(int ease, int page) { setTimeInterpolator(Ease.getInstance(ease), page); }
 
     /**
      * Set TimeInterpolator for all page animations at a certain page.

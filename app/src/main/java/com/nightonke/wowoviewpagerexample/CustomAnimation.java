@@ -5,7 +5,6 @@ import android.os.Build;
 import android.view.View;
 
 import com.nightonke.wowoviewpager.Animation.PageAnimation;
-import com.nightonke.wowoviewpager.Enum.Ease;
 
 
 /**
@@ -20,7 +19,7 @@ public class CustomAnimation extends PageAnimation {
     private float fromElevation;
     private float toElevation;
 
-    private CustomAnimation(int page, float startOffset, float endOffset, Ease ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, float fromElevation, float toElevation) {
+    private CustomAnimation(int page, float startOffset, float endOffset, int ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, float fromElevation, float toElevation) {
         super(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack);
         this.fromElevation = fromElevation;
         this.toElevation = toElevation;

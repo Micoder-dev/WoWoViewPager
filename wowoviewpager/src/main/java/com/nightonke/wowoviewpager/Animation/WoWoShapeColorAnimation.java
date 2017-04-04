@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.View;
 
 import com.nightonke.wowoviewpager.Enum.Chameleon;
-import com.nightonke.wowoviewpager.Enum.Ease;
 
 import static com.nightonke.wowoviewpager.WoWoViewPager.TAG;
 
@@ -22,7 +21,7 @@ import static com.nightonke.wowoviewpager.WoWoViewPager.TAG;
 
 public class WoWoShapeColorAnimation extends SingleColorPageAnimation {
 
-    private WoWoShapeColorAnimation(int page, float startOffset, float endOffset, Ease ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, Integer fromColor, Integer toColor, Chameleon chameleon) {
+    private WoWoShapeColorAnimation(int page, float startOffset, float endOffset, int ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, Integer fromColor, Integer toColor, Chameleon chameleon) {
         super(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack, fromColor, toColor, chameleon);
     }
 

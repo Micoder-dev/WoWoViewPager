@@ -4,8 +4,6 @@ import android.animation.TimeInterpolator;
 import android.os.Build;
 import android.view.View;
 
-import com.nightonke.wowoviewpager.Enum.Ease;
-
 /**
  * Created by Weiping Huang at 14:08 on 2017/4/4
  * For Personal Open Source
@@ -17,7 +15,7 @@ import com.nightonke.wowoviewpager.Enum.Ease;
 
 public class WoWoTranslation3DAnimation extends XYZPageAnimation {
 
-    private WoWoTranslation3DAnimation(int page, float startOffset, float endOffset, Ease ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, float fromX, float fromY, float fromZ, float toX, float toY, float toZ) {
+    private WoWoTranslation3DAnimation(int page, float startOffset, float endOffset, int ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, float fromX, float fromY, float fromZ, float toX, float toY, float toZ) {
         super(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack, fromX, fromY, fromZ, toX, toY, toZ);
     }
 

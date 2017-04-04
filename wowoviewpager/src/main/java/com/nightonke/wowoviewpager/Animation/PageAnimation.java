@@ -4,7 +4,6 @@ import android.animation.TimeInterpolator;
 import android.view.View;
 
 import com.nightonke.wowoviewpager.Enum.Ease;
-import com.nightonke.wowoviewpager.Enum.Easer;
 
 /**
  * Created by Weiping Huang at 02:29 on 2016/3/3
@@ -40,7 +39,7 @@ public abstract class PageAnimation {
     /**
      * The ease type of the animation.
      */
-    protected TimeInterpolator easer = Easer.getInstance(Ease.Linear);
+    protected TimeInterpolator easer = Ease.getInstance(Ease.Linear);
 
     /**
      * Whether use the same ease type of animation when swiping back the view-pager.
@@ -72,12 +71,12 @@ public abstract class PageAnimation {
      * @param interpolator Custom time interpolator.
      * @param useSameEaseEnumBack Whether use the same ease type of animation when swiping back the view-pager.
      */
-    protected PageAnimation(int page, float startOffset, float endOffset, Ease ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack) {
+    protected PageAnimation(int page, float startOffset, float endOffset, int ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack) {
         this.page = page;
         this.startOffset = startOffset;
         this.endOffset = endOffset;
         if (interpolator != null) this.easer = interpolator;
-        else this.easer = Easer.getInstance(ease);
+        else this.easer = Ease.getInstance(ease);
         this.useSameEaseEnumBack = useSameEaseEnumBack;
     }
 
@@ -221,7 +220,7 @@ public abstract class PageAnimation {
      *
      * @param ease Ease enum
      */
-    void setEaseEnum(Ease ease) { setTimeInterpolator(Easer.getInstance(ease)); }
+    void setEaseEnum(int ease) { setTimeInterpolator(Ease.getInstance(ease)); }
 
     /**
      * Set TimeInterpolator for animation.
@@ -236,7 +235,7 @@ public abstract class PageAnimation {
         protected int page = 0;
         protected float startOffset = 0;
         protected float endOffset = 1;
-        protected Ease ease = Ease.Linear;
+        protected int ease = Ease.Linear;
         protected TimeInterpolator interpolator = null;
         protected boolean useSameEaseEnumBack = true;
 
@@ -250,7 +249,7 @@ public abstract class PageAnimation {
 
         public T end(double endOffset) { return end((float) endOffset); }
 
-        public T ease(Ease ease) { this.ease = ease; return (T)this; }
+        public T ease(int ease) { this.ease = ease; return (T)this; }
 
         public T interpolator(TimeInterpolator interpolator) { this.interpolator = interpolator; return (T) this; }
 

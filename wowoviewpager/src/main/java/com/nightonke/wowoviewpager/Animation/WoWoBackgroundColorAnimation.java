@@ -4,7 +4,6 @@ import android.animation.TimeInterpolator;
 import android.view.View;
 
 import com.nightonke.wowoviewpager.Enum.Chameleon;
-import com.nightonke.wowoviewpager.Enum.Ease;
 
 /**
  * Created by Weiping Huang at 02:05 on 2017/3/30
@@ -30,7 +29,7 @@ public class WoWoBackgroundColorAnimation extends SingleColorPageAnimation {
      * @param toColor             The ending-color.
      * @param chameleon           The color-changing-type. Check {@link Chameleon}
      */
-    private WoWoBackgroundColorAnimation(int page, float startOffset, float endOffset, Ease ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, Integer fromColor, Integer toColor, Chameleon chameleon) {
+    private WoWoBackgroundColorAnimation(int page, float startOffset, float endOffset, int ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, Integer fromColor, Integer toColor, Chameleon chameleon) {
         super(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack, fromColor, toColor, chameleon);
     }
 

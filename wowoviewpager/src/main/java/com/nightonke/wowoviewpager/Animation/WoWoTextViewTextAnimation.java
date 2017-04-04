@@ -5,7 +5,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import com.nightonke.wowoviewpager.Enum.Ease;
 import com.nightonke.wowoviewpager.Enum.Typewriter;
 
 import static com.nightonke.wowoviewpager.WoWoViewPager.TAG;
@@ -23,7 +22,7 @@ public class WoWoTextViewTextAnimation extends PageAnimation {
     private String toText = null;
     private Typewriter typewriter = Typewriter.DeleteThenType;
 
-    private WoWoTextViewTextAnimation(int page, float startOffset, float endOffset, Ease ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, String fromText, String toText, Typewriter typewriter) {
+    private WoWoTextViewTextAnimation(int page, float startOffset, float endOffset, int ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, String fromText, String toText, Typewriter typewriter) {
         super(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack);
         this.fromText = fromText;
         this.toText = toText;

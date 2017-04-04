@@ -3,9 +3,9 @@ package com.nightonke.wowoviewpagerexample;
 import android.os.Bundle;
 import android.view.View;
 
-import com.nightonke.wowoviewpager.Enum.Chameleon;
 import com.nightonke.wowoviewpager.Animation.ViewAnimation;
 import com.nightonke.wowoviewpager.Animation.WoWoLayerListColorAnimation;
+import com.nightonke.wowoviewpager.Enum.Chameleon;
 
 public class WoWoLayerListColorAnimationActivity extends WoWoActivity {
 

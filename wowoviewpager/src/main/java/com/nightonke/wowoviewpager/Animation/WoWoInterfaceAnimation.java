@@ -3,8 +3,6 @@ package com.nightonke.wowoviewpager.Animation;
 import android.animation.TimeInterpolator;
 import android.view.View;
 
-import com.nightonke.wowoviewpager.Enum.Ease;
-
 /**
  * Created by Weiping Huang at 19:51 on 2017/3/30
  * For Personal Open Source
@@ -18,7 +16,7 @@ public class WoWoInterfaceAnimation extends PageAnimation {
 
     private WoWoAnimationInterface animationInterface;
 
-    private WoWoInterfaceAnimation(int page, float startOffset, float endOffset, Ease ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, WoWoAnimationInterface animationInterface) {
+    private WoWoInterfaceAnimation(int page, float startOffset, float endOffset, int ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, WoWoAnimationInterface animationInterface) {
         super(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack);
         this.animationInterface = animationInterface;
     }

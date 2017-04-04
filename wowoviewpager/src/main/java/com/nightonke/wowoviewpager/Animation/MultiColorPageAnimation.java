@@ -4,7 +4,6 @@ import android.animation.TimeInterpolator;
 import android.graphics.Color;
 
 import com.nightonke.wowoviewpager.Enum.Chameleon;
-import com.nightonke.wowoviewpager.Enum.Ease;
 
 import java.util.List;
 
@@ -43,7 +42,7 @@ public abstract class MultiColorPageAnimation extends PageAnimation {
      * @param toColors The ending-colors.
      * @param chameleon The color-changing-type. Check {@link Chameleon}
      */
-    public MultiColorPageAnimation(int page, float startOffset, float endOffset, Ease ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, int[] fromColors, int[] toColors, Chameleon chameleon) {
+    public MultiColorPageAnimation(int page, float startOffset, float endOffset, int ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, int[] fromColors, int[] toColors, Chameleon chameleon) {
         super(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack);
         this.fromColors = fromColors;
         this.toColors = toColors;

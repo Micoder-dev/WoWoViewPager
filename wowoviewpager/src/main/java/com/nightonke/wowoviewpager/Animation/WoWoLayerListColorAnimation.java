@@ -8,9 +8,8 @@ import android.util.Log;
 import android.view.View;
 
 import com.nightonke.wowoviewpager.Enum.Chameleon;
-import com.nightonke.wowoviewpager.Enum.Ease;
 
-import static android.content.ContentValues.TAG;
+import static com.nightonke.wowoviewpager.WoWoViewPager.TAG;
 
 /**
  * Created by Weiping Huang at 16:05 on 2017/3/30
@@ -36,7 +35,7 @@ public class WoWoLayerListColorAnimation extends MultiColorPageAnimation {
      * @param toColors            The ending-colors.
      * @param chameleon           The color-changing-type. Check {@link Chameleon}
      */
-    private WoWoLayerListColorAnimation(int page, float startOffset, float endOffset, Ease ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, int[] fromColors, int[] toColors, Chameleon chameleon) {
+    private WoWoLayerListColorAnimation(int page, float startOffset, float endOffset, int ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, int[] fromColors, int[] toColors, Chameleon chameleon) {
         super(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack, fromColors, toColors, chameleon);
     }
 

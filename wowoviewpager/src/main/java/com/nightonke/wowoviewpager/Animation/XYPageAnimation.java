@@ -2,8 +2,6 @@ package com.nightonke.wowoviewpager.Animation;
 
 import android.animation.TimeInterpolator;
 
-import com.nightonke.wowoviewpager.Enum.Ease;
-
 /**
  * Created by Weiping Huang at 13:31 on 2017/4/4
  * For Personal Open Source
@@ -36,7 +34,7 @@ public abstract class XYPageAnimation extends PageAnimation {
      * @param toX To x value.
      * @param toY To y value.
      */
-    public XYPageAnimation(int page, float startOffset, float endOffset, Ease ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, float fromX, float fromY, float toX, float toY) {
+    public XYPageAnimation(int page, float startOffset, float endOffset, int ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, float fromX, float fromY, float toX, float toY) {
         super(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack);
         this.fromX = fromX;
         this.fromY = fromY;

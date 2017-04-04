@@ -4,8 +4,6 @@ import android.animation.TimeInterpolator;
 import android.os.Build;
 import android.view.View;
 
-import com.nightonke.wowoviewpager.Enum.Ease;
-
 /**
  * Created by Weiping Huang at 12:39 on 2017/4/3
  * For Personal Open Source
@@ -21,7 +19,7 @@ public class WoWoElevationAnimation extends PageAnimation {
     private float fromElevation;
     private float toElevation;
 
-    private WoWoElevationAnimation(int page, float startOffset, float endOffset, Ease ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, float fromElevation, float toElevation) {
+    private WoWoElevationAnimation(int page, float startOffset, float endOffset, int ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, float fromElevation, float toElevation) {
         super(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack);
         this.fromElevation = fromElevation;
         this.toElevation = toElevation;

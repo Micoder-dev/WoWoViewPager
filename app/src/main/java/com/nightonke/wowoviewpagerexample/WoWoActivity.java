@@ -16,7 +16,7 @@ public abstract class WoWoActivity extends AppCompatActivity {
 
     protected WoWoViewPager wowo;
 
-    protected Ease ease = Ease.Linear;
+    protected int ease = Ease.Linear;
     protected boolean useSameEaseTypeBack = true;
 
     protected TextView pageNumber;
