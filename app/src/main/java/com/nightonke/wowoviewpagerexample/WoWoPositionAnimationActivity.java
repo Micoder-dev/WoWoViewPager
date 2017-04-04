@@ -37,33 +37,33 @@ public class WoWoPositionAnimationActivity extends WoWoActivity {
         View view = findViewById(R.id.test);
         float radius = view.getWidth() / 2;
 
-        ViewAnimation animation = new ViewAnimation(view);
-        animation.add(WoWoPositionAnimation.builder().page(0).start(0).end(1)
+        ViewAnimation viewAnimation = new ViewAnimation(view);
+        viewAnimation.add(WoWoPositionAnimation.builder().page(0)
                 .fromX(view.getX()).toX(0)
                 .fromY(view.getY()).toY(0)
                 .ease(ease).build());
-        animation.add(WoWoPositionAnimation.builder().page(1).start(0).end(1)
+        viewAnimation.add(WoWoPositionAnimation.builder().page(1)
                 .fromX(0).toX(screenW - radius * 2)
                 .fromY(0).toY(screenH - radius * 2)
                 .ease(ease).build());
-        animation.add(WoWoPositionAnimation.builder().page(2).start(0).end(0.5)
+        viewAnimation.add(WoWoPositionAnimation.builder().page(2).start(0).end(0.5)
                 .keepX(screenW - radius * 2)
                 .fromY(screenH - radius * 2).toY(screenH / 2 - radius)
                 .ease(Ease.Linear).build());
-        animation.add(WoWoPositionAnimation.builder().page(2).start(0.5).end(1)
+        viewAnimation.add(WoWoPositionAnimation.builder().page(2).start(0.5).end(1)
                 .fromX(screenW - radius * 2).toX(0)
                 .keepY(screenH / 2 - radius)
                 .ease(ease).build());
-        animation.add(WoWoPositionAnimation.builder().page(3).start(0).end(0.5)
+        viewAnimation.add(WoWoPositionAnimation.builder().page(3).start(0).end(0.5)
                 .fromX(0).toX(screenW / 2 - radius)
                 .fromY(screenH / 2 - radius).toY(0)
                 .ease(Ease.Linear).build());
-        animation.add(WoWoPositionAnimation.builder().page(3).start(0.5).end(1)
+        viewAnimation.add(WoWoPositionAnimation.builder().page(3).start(0.5).end(1)
                 .keepX(screenW / 2 - radius)
                 .fromY(0).toY(screenH / 2 - radius)
                 .ease(ease).build());
 
-        wowo.addAnimation(animation);
+        wowo.addAnimation(viewAnimation);
         wowo.setUseSameEaseBack(useSameEaseTypeBack);
         wowo.ready();
     }
