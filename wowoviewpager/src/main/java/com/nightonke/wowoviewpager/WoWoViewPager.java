@@ -34,7 +34,7 @@ public class WoWoViewPager extends BaseViewPager {
     public static final int Vertical = 1;
 
     // Public attributes
-    private Gearbox gearbox = Gearbox.Positive1;
+    private Gearbox gearbox = Gearbox.Positive3;
     private boolean draggable = true;
     private int scrollDuration = -1;
     private int direction = Horizontal;
