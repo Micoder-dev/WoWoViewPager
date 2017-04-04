@@ -41,6 +41,10 @@ public class WoWoPosition3DAnimation extends XYZPageAnimation {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) view.setTranslationZ(toZ);
     }
 
+    public static Builder builder() {
+        return new Builder();
+    }
+
     public static class Builder extends XYZPageAnimation.Builder<WoWoPosition3DAnimation.Builder> {
 
         public WoWoPosition3DAnimation build() {

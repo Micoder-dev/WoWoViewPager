@@ -22,26 +22,30 @@ public class WoWoTranslation3DAnimation extends XYZPageAnimation {
 
     @Override
     protected void toStartState(View view) {
-        view.setX(fromX);
-        view.setY(fromY);
+        view.setTranslationX(fromX);
+        view.setTranslationY(fromY);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) view.setTranslationZ(fromZ);
     }
 
     @Override
     protected void toMiddleState(View view, float offset) {
-        view.setX(fromX + (toX - fromX) * offset);
-        view.setY(fromY + (toY - fromY) * offset);
+        view.setTranslationX(fromX + (toX - fromX) * offset);
+        view.setTranslationY(fromY + (toY - fromY) * offset);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) view.setTranslationZ(fromZ + (toZ - fromZ) * offset);
     }
 
     @Override
     protected void toEndState(View view) {
-        view.setX(toX);
-        view.setY(toY);
+        view.setTranslationX(toX);
+        view.setTranslationY(toY);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) view.setTranslationZ(toZ);
     }
 
-    public static class Builder extends XYZPageAnimation.Builder<WoWoPosition3DAnimation.Builder> {
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static class Builder extends XYZPageAnimation.Builder<WoWoTranslation3DAnimation.Builder> {
 
         public WoWoTranslation3DAnimation build() {
             checkUninitializedAttributes();
