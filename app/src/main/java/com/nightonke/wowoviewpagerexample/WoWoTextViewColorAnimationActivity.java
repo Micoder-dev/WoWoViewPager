@@ -23,14 +23,19 @@ public class WoWoTextViewColorAnimationActivity extends WoWoActivity {
     }
 
     private void addAnimations(View view, Chameleon chameleon) {
-        ViewAnimation animation = new ViewAnimation(view);
-        animation.add(WoWoTextViewColorAnimation.builder().page(0).start(0).end(1).from("#ff0000").to("#00ff00").chameleon(chameleon).build());
-        animation.add(WoWoTextViewColorAnimation.builder().page(1).start(0).end(1).from("#00ff00").to("#0000ff").chameleon(chameleon).build());
-        animation.add(WoWoTextViewColorAnimation.builder().page(2).start(0).end(1).from("#0000ff").to("#ff0000").chameleon(chameleon).build());
-        animation.add(WoWoTextViewColorAnimation.builder().page(3).start(0).end(0.5).from("#ff0000").to("#000000").chameleon(chameleon).build());
-        animation.add(WoWoTextViewColorAnimation.builder().page(3).start(0.5).end(1).from("#000000").to("#ff0000").chameleon(chameleon).build());
+        ViewAnimation viewAnimation = new ViewAnimation(view);
+        viewAnimation.add(WoWoTextViewColorAnimation.builder().page(0)
+                .from("#ff0000").to("#00ff00").chameleon(chameleon).build());
+        viewAnimation.add(WoWoTextViewColorAnimation.builder().page(1)
+                .from("#00ff00").to("#0000ff").chameleon(chameleon).build());
+        viewAnimation.add(WoWoTextViewColorAnimation.builder().page(2)
+                .from("#0000ff").to("#ff0000").chameleon(chameleon).build());
+        viewAnimation.add(WoWoTextViewColorAnimation.builder().page(3).start(0).end(0.5)
+                .from("#ff0000").to("#000000").chameleon(chameleon).build());
+        viewAnimation.add(WoWoTextViewColorAnimation.builder().page(3).start(0.5).end(1)
+                .from("#000000").to("#ff0000").chameleon(chameleon).build());
 
-        wowo.addAnimation(animation);
+        wowo.addAnimation(viewAnimation);
 
         wowo.setEase(ease);
         wowo.setUseSameEaseBack(useSameEaseTypeBack);

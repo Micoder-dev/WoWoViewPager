@@ -16,13 +16,18 @@ public class WoWoTextViewTextSizeAnimationActivity extends WoWoActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ViewAnimation animation = new ViewAnimation(findViewById(R.id.test));
-        animation.add(WoWoTextViewTextSizeAnimation.builder().page(0).start(0).end(1).fromSp(50).toSp(20).build());
-        animation.add(WoWoTextViewTextSizeAnimation.builder().page(1).start(0).end(1).fromSp(20).toSp(60).build());
-        animation.add(WoWoTextViewTextSizeAnimation.builder().page(2).start(0).end(1).fromSp(60).toSp(5).build());
-        animation.add(WoWoTextViewTextSizeAnimation.builder().page(3).start(0).end(0.5).fromSp(5).toSp(50).build());
-        animation.add(WoWoTextViewTextSizeAnimation.builder().page(3).start(0.5).end(1).fromSp(50).toSp(30).build());
-        wowo.addAnimation(animation);
+        ViewAnimation viewAnimation = new ViewAnimation(findViewById(R.id.test));
+        viewAnimation.add(WoWoTextViewTextSizeAnimation.builder().page(0)
+                .fromSp(50).toSp(20).build());
+        viewAnimation.add(WoWoTextViewTextSizeAnimation.builder().page(1)
+                .fromSp(20).toSp(60).build());
+        viewAnimation.add(WoWoTextViewTextSizeAnimation.builder().page(2)
+                .fromSp(60).toSp(5).build());
+        viewAnimation.add(WoWoTextViewTextSizeAnimation.builder().page(3).start(0).end(0.5)
+                .fromSp(5).toSp(50).build());
+        viewAnimation.add(WoWoTextViewTextSizeAnimation.builder().page(3).start(0.5).end(1)
+                .fromSp(50).toSp(30).build());
+        wowo.addAnimation(viewAnimation);
 
         wowo.setEase(ease);
         wowo.setUseSameEaseBack(useSameEaseTypeBack);
