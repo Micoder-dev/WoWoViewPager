@@ -16,13 +16,18 @@ public class WoWoRotationAnimationActivity extends WoWoActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ViewAnimation animation = new ViewAnimation(findViewById(R.id.test));
-        animation.add(WoWoRotationAnimation.builder().page(0).start(0).end(1).fromX(0).toX(180).keepY(0).keepZ(0).build());
-        animation.add(WoWoRotationAnimation.builder().page(1).start(0).end(1).keepX(180).fromY(0).toY(180).keepZ(0).build());
-        animation.add(WoWoRotationAnimation.builder().page(2).start(0).end(1).keepX(180).keepY(180).fromZ(0).toZ(180).build());
-        animation.add(WoWoRotationAnimation.builder().page(3).start(0).end(0.5).keepX(180).keepY(180).fromZ(180).toZ(90).build());
-        animation.add(WoWoRotationAnimation.builder().page(3).start(0.5).end(1).fromX(180).toX(90).keepY(180).keepZ(90).build());
-        wowo.addAnimation(animation);
+        ViewAnimation viewAnimation = new ViewAnimation(findViewById(R.id.test));
+        viewAnimation.add(WoWoRotationAnimation.builder().page(0)
+                .fromX(0).toX(180).keepY(0).keepZ(0).build());
+        viewAnimation.add(WoWoRotationAnimation.builder().page(1)
+                .keepX(180).fromY(0).toY(180).keepZ(0).build());
+        viewAnimation.add(WoWoRotationAnimation.builder().page(2)
+                .keepX(180).keepY(180).fromZ(0).toZ(180).build());
+        viewAnimation.add(WoWoRotationAnimation.builder().page(3).start(0).end(0.5)
+                .keepX(180).keepY(180).fromZ(180).toZ(90).build());
+        viewAnimation.add(WoWoRotationAnimation.builder().page(3).start(0.5).end(1)
+                .fromX(180).toX(90).keepY(180).keepZ(90).build());
+        wowo.addAnimation(viewAnimation);
 
         wowo.setEase(ease);
         wowo.setUseSameEaseBack(useSameEaseTypeBack);
