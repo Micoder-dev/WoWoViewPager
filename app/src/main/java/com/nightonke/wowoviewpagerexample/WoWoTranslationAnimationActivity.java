@@ -38,11 +38,11 @@ public class WoWoTranslationAnimationActivity extends WoWoActivity {
         float radius = view.getWidth() / 2;
 
         ViewAnimation viewAnimation = new ViewAnimation(view);
-        viewAnimation.add(WoWoTranslationAnimation.builder().page(0).start(0).end(1)
+        viewAnimation.add(WoWoTranslationAnimation.builder().page(0)
                 .fromX(view.getTranslationX()).toX(-screenW / 2 + radius)
                 .fromY(view.getTranslationY()).toY(-screenH / 2 + radius)
                 .ease(ease).build());
-        viewAnimation.add(WoWoTranslationAnimation.builder().page(1).start(0).end(1)
+        viewAnimation.add(WoWoTranslationAnimation.builder().page(1)
                 .fromX(-screenW / 2 + radius).toX(screenW / 2 - radius)
                 .fromY(-screenH / 2 + radius).toY(screenH / 2 - radius)
                 .ease(ease).build());
