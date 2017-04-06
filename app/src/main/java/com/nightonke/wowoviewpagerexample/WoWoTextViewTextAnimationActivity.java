@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.nightonke.wowoviewpager.Animation.WoWoTextViewTextAnimation;
 import com.nightonke.wowoviewpager.Enum.Typewriter;
+import com.nightonke.wowoviewpager.Enum.WoWoTypewriter;
 
 public class WoWoTextViewTextAnimationActivity extends WoWoActivity {
 
@@ -17,9 +18,9 @@ public class WoWoTextViewTextAnimationActivity extends WoWoActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        addTextAnimation(findViewById(R.id.test0), Typewriter.InsertFromLeft);
-        addTextAnimation(findViewById(R.id.test1), Typewriter.DeleteThenType);
-        addTextAnimation(findViewById(R.id.test2), Typewriter.InsertFromRight);
+        addTextAnimation(findViewById(R.id.test0), WoWoTypewriter.InsertFromLeft);
+        addTextAnimation(findViewById(R.id.test1), WoWoTypewriter.DeleteThenType);
+        addTextAnimation(findViewById(R.id.test2), WoWoTypewriter.InsertFromRight);
 
         wowo.setEase(ease);
         wowo.setUseSameEaseBack(useSameEaseTypeBack);

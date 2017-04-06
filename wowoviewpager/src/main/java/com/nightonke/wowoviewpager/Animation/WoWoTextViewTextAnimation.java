@@ -14,19 +14,14 @@ import static com.nightonke.wowoviewpager.WoWoViewPager.TAG;
  * For Personal Open Source
  * Contact me at 2584541288@qq.com or nightonke@outlook.com
  * For more projects: https://github.com/Nightonke
+ *
+ * Animation to change text in an instance of TextView.
  */
 
-public class WoWoTextViewTextAnimation extends PageAnimation {
+public class WoWoTextViewTextAnimation extends TextPageAnimation {
 
-    private String fromText = null;
-    private String toText = null;
-    private Typewriter typewriter = Typewriter.DeleteThenType;
-
-    private WoWoTextViewTextAnimation(int page, float startOffset, float endOffset, int ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, String fromText, String toText, Typewriter typewriter) {
-        super(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack);
-        this.fromText = fromText;
-        this.toText = toText;
-        this.typewriter = typewriter;
+    public WoWoTextViewTextAnimation(int page, float startOffset, float endOffset, int ease, TimeInterpolator interpolator, boolean useSameEaseEnumBack, String fromText, String toText, Typewriter typewriter) {
+        super(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack, fromText, toText, typewriter);
     }
 
     @Override
@@ -36,7 +31,7 @@ public class WoWoTextViewTextAnimation extends PageAnimation {
 
     @Override
     protected void toMiddleState(View view, float offset) {
-        setText(view, Typewriter.nextString(fromText, toText, offset, typewriter));
+        setText(view, typewriter.type(fromText, toText, offset));
     }
 
     @Override
@@ -57,27 +52,11 @@ public class WoWoTextViewTextAnimation extends PageAnimation {
         return new Builder();
     }
 
-    public static class Builder extends PageAnimation.Builder<WoWoTextViewTextAnimation.Builder> {
-
-        private String fromText = null;
-        private String toText = null;
-        private Typewriter typewriter = Typewriter.DeleteThenType;
-
-        public Builder from(String fromText) { this.fromText = fromText; return this; }
-
-        public Builder to(String toText) { this.toText = toText; return this; }
-
-        public Builder typewriter(Typewriter typewriter) { this.typewriter = typewriter; return this; }
+    public static class Builder extends TextPageAnimation.Builder<WoWoTextViewTextAnimation.Builder> {
 
         public WoWoTextViewTextAnimation build() {
             checkUninitializedAttributes();
             return new WoWoTextViewTextAnimation(page, startOffset, endOffset, ease, interpolator, useSameEaseEnumBack, fromText, toText, typewriter);
-        }
-
-        @Override
-        protected void checkUninitializedAttributes() {
-            if (fromText == null) uninitializedAttributeException("fromText");
-            if (toText == null) uninitializedAttributeException("toText");
         }
     }
 }
