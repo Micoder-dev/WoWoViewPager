@@ -51,7 +51,7 @@ public abstract class MultiColorPageAnimation extends PageAnimation {
         prepareColors();
     }
 
-    int[] middleColors(Chameleon chameleon, float offset) {
+    protected int[] middleColors(Chameleon chameleon, float offset) {
         if (chameleon == Chameleon.RGB) return middleRGBColors(offset);
         else if (chameleon == Chameleon.HSV) return middleHSVColors(offset);
         throw new RuntimeException("Unknown Chameleon!");

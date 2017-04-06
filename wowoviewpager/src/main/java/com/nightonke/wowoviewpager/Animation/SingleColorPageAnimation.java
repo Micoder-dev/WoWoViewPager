@@ -59,7 +59,7 @@ public abstract class SingleColorPageAnimation extends PageAnimation {
         }
     }
 
-    int middleColor(Chameleon chameleon, float offset) {
+    protected int middleColor(Chameleon chameleon, float offset) {
         if (chameleon == Chameleon.RGB) return middleRGBColor(offset);
         else if (chameleon == Chameleon.HSV) return middleHSVColor(offset);
         throw new RuntimeException("Unknown Chameleon!");
