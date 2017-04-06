@@ -6,9 +6,9 @@ android {
 
     defaultConfig {
         applicationId "com.nightonke.wowoviewpagerexample"
-        minSdkVersion 15
+        minSdkVersion 14
         targetSdkVersion 25
-        versionCode 1
+        versionCode 2000
         versionName "2.0.0"
     }
     buildTypes {
