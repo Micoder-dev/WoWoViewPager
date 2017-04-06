@@ -13,6 +13,7 @@ import android.view.View;
 import com.nightonke.wowoviewpager.Animation.ViewAnimation;
 import com.nightonke.wowoviewpager.Enum.Ease;
 import com.nightonke.wowoviewpager.Enum.Gearbox;
+import com.nightonke.wowoviewpager.Enum.WoWoGearbox;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -35,7 +36,7 @@ public class WoWoViewPager extends BaseViewPager {
     public static final int Vertical = 1;
 
     // Public attributes
-    private Gearbox gearbox = Gearbox.Positive3;
+    private Gearbox gearbox = WoWoGearbox.Positive3;
     private boolean draggable = true;
     private int scrollDuration = -1;
     private int direction = Horizontal;
@@ -85,7 +86,7 @@ public class WoWoViewPager extends BaseViewPager {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.WoWoViewPager, 0, 0);
         if (typedArray == null) return;
         try {
-            gearbox = Gearbox.values()[typedArray.getInteger(R.styleable.WoWoViewPager_wowo_gearbox, context.getResources().getInteger(R.integer.default_gearbox))];
+            gearbox = WoWoGearbox.Gearboxes[typedArray.getInteger(R.styleable.WoWoViewPager_wowo_gearbox, context.getResources().getInteger(R.integer.default_gearbox))];
             draggable = typedArray.getBoolean(R.styleable.WoWoViewPager_wowo_draggable, context.getResources().getBoolean(R.bool.default_draggable));
             scrollDuration = typedArray.getInteger(R.styleable.WoWoViewPager_wowo_scrollDuration, context.getResources().getInteger(R.integer.default_scrollDuration));
             direction = typedArray.getInteger(R.styleable.WoWoViewPager_wowo_direction, context.getResources().getInteger(R.integer.default_direction));
@@ -95,7 +96,7 @@ public class WoWoViewPager extends BaseViewPager {
     }
 
     private void initScroller() {
-        scroller = new WoWoScroller(this.getContext(), gearbox.interpolator());
+        scroller = new WoWoScroller(this.getContext(), gearbox);
         scroller.setDuration(scrollDuration);
         setScroller(scroller);
     }

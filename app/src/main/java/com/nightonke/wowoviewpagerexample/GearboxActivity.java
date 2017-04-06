@@ -5,7 +5,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 
-import com.nightonke.wowoviewpager.Enum.Gearbox;
+import com.nightonke.wowoviewpager.Enum.WoWoGearbox;
 
 public class GearboxActivity extends GuidePageActivity1 {
 
@@ -23,11 +23,11 @@ public class GearboxActivity extends GuidePageActivity1 {
         layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
         seekBar.setLayoutParams(layoutParams);
 
-        seekBar.setMax(Gearbox.values().length - 1);
+        seekBar.setMax(WoWoGearbox.Gearboxes.length - 1);
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if (fromUser) wowo.setGearbox(Gearbox.values()[progress]);
+                if (fromUser) wowo.setGearbox(WoWoGearbox.Gearboxes[progress]);
             }
 
             @Override
@@ -40,7 +40,7 @@ public class GearboxActivity extends GuidePageActivity1 {
 
             }
         });
-        seekBar.setProgress(wowo.getGearbox().value());
+        seekBar.setProgress(3);
         base.addView(seekBar);
     }
 }
