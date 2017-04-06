@@ -17,8 +17,6 @@ import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.nightonke.wowoviewpager.Animation.WoWoAnimationInterface;
-
 /**
  * Created by Weiping Huang at 18:38 on 2016/3/6
  * For Personal Open Source
@@ -28,7 +26,7 @@ import com.nightonke.wowoviewpager.Animation.WoWoAnimationInterface;
  * WoWoPathView helps to create a path animation, including the image-head.
  */
 
-public class WoWoPathView extends View implements WoWoAnimationInterface {
+public class WoWoPathView extends View {
 
     private boolean dashPath;
     private float dashSegmentLength;
@@ -213,21 +211,6 @@ public class WoWoPathView extends View implements WoWoAnimationInterface {
         this.progress = process;
         // Check method onDraw to find out why
         if (!dynamicalPath || Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) invalidate();
-    }
-
-    @Override
-    public void toStartState() {
-        setProcess(0);
-    }
-
-    @Override
-    public void toMiddleState(float offset) {
-        setProcess(offset);
-    }
-
-    @Override
-    public void toEndState() {
-        setProcess(1);
     }
 
     /**

@@ -24,13 +24,13 @@ public class WoWoLayerListColorAnimationActivity extends WoWoActivity {
 
     private void addAnimations(View view, Chameleon chameleon) {
         ViewAnimation animation = new ViewAnimation(view);
-        animation.add(WoWoLayerListColorAnimation.builder().page(0).start(0).end(1)
+        animation.add(WoWoLayerListColorAnimation.builder().page(0)
                 .from("#000000", "#ff0000", "#00ff00", "#00ff00", "#ff0000")
                 .to("#0000ff", "#00ff00", "#ff0000", "#ff0000", "#00ff00").chameleon(chameleon).build());
-        animation.add(WoWoLayerListColorAnimation.builder().page(1).start(0).end(1)
+        animation.add(WoWoLayerListColorAnimation.builder().page(1)
                 .from("#0000ff", "#00ff00", "#ff0000", "#ff0000", "#00ff00")
                 .to("#000000", "#ff0000", "#00ff00", "#00ff00", "#ff0000").chameleon(chameleon).build());
-        animation.add(WoWoLayerListColorAnimation.builder().page(2).start(0).end(1)
+        animation.add(WoWoLayerListColorAnimation.builder().page(2)
                 .from("#000000", "#ff0000", "#00ff00", "#00ff00", "#ff0000")
                 .to("#0000ff", "#00ff00", "#ff0000", "#ff0000", "#00ff00").chameleon(chameleon).build());
         animation.add(WoWoLayerListColorAnimation.builder().page(3).start(0).end(0.5)
