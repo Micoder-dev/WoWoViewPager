@@ -9,6 +9,10 @@ package com.nightonke.wowoviewpager.Enum;
 
 public class WoWoTypewriter {
 
+    /**
+     * ABC->123:
+     * ABC->AB->A->{empty}->1->12->123
+     */
     public static final Typewriter DeleteThenType = new Typewriter() {
         @Override
         public String type(String fromText, String toText, float offset) {
@@ -16,6 +20,10 @@ public class WoWoTypewriter {
         }
     };
 
+    /**
+     * ABC->123:
+     * ABC->1AB->12A->123
+     */
     public static final Typewriter InsertFromLeft = new Typewriter() {
         @Override
         public String type(String fromText, String toText, float offset) {
@@ -23,6 +31,10 @@ public class WoWoTypewriter {
         }
     };
 
+    /**
+     * ABC->123:
+     * ABC->AB1->A12->123
+     */
     public static final Typewriter InsertFromRight = new Typewriter() {
         @Override
         public String type(String fromText, String toText, float offset) {
