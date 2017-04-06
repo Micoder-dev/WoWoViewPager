@@ -14,6 +14,7 @@ public class StaticActivity extends GuidePageActivity1 {
         super.onCreate(savedInstanceState);
 
         wowo.setDraggable(false);
+        wowo.setScrollDuration(1000);
 
         RelativeLayout base = (RelativeLayout) findViewById(R.id.base);
 
@@ -42,7 +43,6 @@ public class StaticActivity extends GuidePageActivity1 {
 
             }
         });
-        wowo.setScrollDuration(1000);
         seekBar.setProgress(2);
         base.addView(seekBar);
 

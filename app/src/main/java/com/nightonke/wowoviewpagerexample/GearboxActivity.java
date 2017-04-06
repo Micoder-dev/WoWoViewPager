@@ -5,6 +5,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 
+import com.nightonke.wowoviewpager.Enum.Gearbox;
 import com.nightonke.wowoviewpager.Enum.WoWoGearbox;
 
 public class GearboxActivity extends GuidePageActivity1 {

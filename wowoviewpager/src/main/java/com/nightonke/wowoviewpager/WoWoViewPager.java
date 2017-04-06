@@ -79,6 +79,7 @@ public class WoWoViewPager extends BaseViewPager {
     private void init(Context context, AttributeSet attrs) {
         initAttrs(context, attrs);
         initScroller();
+        innerSetDirection();
         setOverScrollMode(OVER_SCROLL_NEVER);
     }
 
@@ -377,6 +378,10 @@ public class WoWoViewPager extends BaseViewPager {
     public void setDirection(int direction) {
         if (this.direction == direction) return;
         this.direction = direction;
+        innerSetDirection();
+    }
+
+    private void innerSetDirection() {
         if (this.direction == Horizontal) super.setDirection(Direction.Right);
         else if (this.direction == Vertical) super.setDirection(Direction.Up);
     }
@@ -441,8 +446,8 @@ public class WoWoViewPager extends BaseViewPager {
     /**
      * Start scroll automatically.
      *
-     * @param touchThenStop If WoWoViewPager is touched, then stop scrolling automatically
-     * @param delayPerPage Delay time when a page is scrolled to.
+     * @param touchThenStop If WoWoViewPager is touched, then stop scrolling automatically.
+     * @param delayPerPage Delay before scrolling for each page.
      * @param scrollDuration Scroll-duration for each page.
      */
     @SuppressLint("HandlerLeak")
