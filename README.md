@@ -5,8 +5,7 @@
 [![Download](https://api.bintray.com/packages/nightonke/maven/wowo-viewpager/images/download.svg)](https://bintray.com/nightonke/maven/wowo-viewpager)
 [![Lisense](https://img.shields.io/badge/License-Apache%202-lightgrey.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
-<img src="https://github.com/Nightonke/WoWoViewPager/blob/master/Pictures/GuidePage1.gif">
-<img src="https://github.com/Nightonke/WoWoViewPager/blob/master/Pictures/GuidePage2.gif">
+<img src="https://github.com/Nightonke/WoWoViewPager/blob/master/Pictures/GuidePage1.gif"> <img src="https://github.com/Nightonke/WoWoViewPager/blob/master/Pictures/GuidePage2.gif">
 
 WoWoViewPager combines ViewPager and Animations to provide a simple way to create applications' guide pages. When users are dragging WoWoViewPager, they become the director of the applications. The above gifs show how WoWoViewPager looks like, it supports some simple animations like translation, scale, alpha, background color animations, and moreover, some complicate animations like gif-playing, svg-drawing and path-drawing animations with corresponding custom views.
 
@@ -79,11 +78,11 @@ Check the [wiki](https://github.com/Nightonke/WoWoViewPager/wiki) to use WoWoVie
 #### [Version History](https://github.com/Nightonke/WoWoViewPager/wiki/Version-History)
 #### [How WoWoViewPager Works](https://github.com/Nightonke/WoWoViewPager/wiki/How-WoWoViewPager-Works)
 
-### Issues & Feedbacks
+## Issues & Feedbacks
 Try to tell me the bugs or enhancements about WoWoViewPager, or contact me with Nightonke@outlook.com / 2584541288@qq.com. Before doing that, having a careful read on [read-me](https://github.com/Nightonke/WoWoViewPager), [wiki](https://github.com/Nightonke/WoWoViewPager/wiki) and [issues](https://github.com/Nightonke/WoWoViewPager/issues) is really helpful.
 
-### About Versions
+## About Versions
 Version 1.0.2 or below use the old api of WoWoViewPager. From version 2.0.0, builder-pattern was used in WoWoViewPager and gif-playing, svg-drawing animations and more features are supported. I strongly suggest to use version 2.0.0 or above. If you still want to use version 1.0.2 or below, try to check the old documents([English](https://github.com/Nightonke/WoWoViewPager/blob/master/DEPRECATED-README-EN.md)|[中文文档](https://github.com/Nightonke/WoWoViewPager/blob/master/DEPRECATED-README-ZH.md)). 
 
-### About Me
+## About Me
 [Nightonke](http://huangweiping.me/)
