@@ -124,5 +124,5 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v2
         with:
-          name: apk
+          name: WoWoViewPagerAPK
           path: app/build/outputs/apk/debug/**.apk
